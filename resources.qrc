@@ -10,4 +10,9 @@
         <file>images/50/openFile.png</file>
         <file>images/50/saveFile.png</file>
     </qresource>
+    <qresource prefix="/">
+        <file>images/50/addImage.png</file>
+        <file>images/50/redo.png</file>
+        <file>images/50/undo.png</file>
+    </qresource>
 </RCC>
