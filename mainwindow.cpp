@@ -33,15 +33,30 @@ void MainWindow::quitApp()
 
 void MainWindow::on_actionSave_triggered()
 {
+    //TODO
     qDebug() << "Save triggered";
 }
 
 void MainWindow::on_actionOpen_triggered()
 {
+    //TODO
     qDebug() << "Open triggered";
 }
 
 void MainWindow::on_actionNew_triggered()
 {
+    //TODO
     qDebug() << "New triggered";
+}
+
+void MainWindow::on_actionUndo_triggered()
+{
+    //TODO
+    qDebug() << "Undo triggered";
+}
+
+void MainWindow::on_actionRedo_triggered()
+{
+    //TODO
+    qDebug() << "Undo triggered";
 }
