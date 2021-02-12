@@ -39,6 +39,12 @@
     </property>
     <addaction name="actionUndo"/>
     <addaction name="actionRedo"/>
+    <addaction name="separator"/>
+    <addaction name="actionAdd_Image"/>
+    <addaction name="actionAdd_Aida_Template"/>
+    <addaction name="actionAdd_Color_Palette"/>
+    <addaction name="separator"/>
+    <addaction name="actionFill_Color"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
@@ -60,6 +66,21 @@
    <addaction name="actionUndo"/>
    <addaction name="actionRedo"/>
    <addaction name="actionExit"/>
+  </widget>
+  <widget class="QToolBar" name="toolBar_2">
+   <property name="windowTitle">
+    <string>toolBar_2</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>LeftToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionAdd_Image"/>
+   <addaction name="actionAdd_Aida_Template"/>
+   <addaction name="actionFill_Color"/>
+   <addaction name="actionAdd_Color_Palette"/>
   </widget>
   <action name="actionNew">
    <property name="icon">
@@ -113,6 +134,45 @@
    </property>
    <property name="text">
     <string>Redo</string>
+   </property>
+  </action>
+  <action name="actionAdd_Image">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/images/50/addImage.png</normaloff>:/images/50/addImage.png</iconset>
+   </property>
+   <property name="text">
+    <string>Add Image...</string>
+   </property>
+   <property name="toolTip">
+    <string>Add Image</string>
+   </property>
+  </action>
+  <action name="actionAdd_Aida_Template">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/images/50/images/50/grid.png</normaloff>:/images/50/images/50/grid.png</iconset>
+   </property>
+   <property name="text">
+    <string>Add Aida Template...</string>
+   </property>
+  </action>
+  <action name="actionFill_Color">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/images/50/images/50/fillColor.png</normaloff>:/images/50/images/50/fillColor.png</iconset>
+   </property>
+   <property name="text">
+    <string>Fill Color</string>
+   </property>
+  </action>
+  <action name="actionAdd_Color_Palette">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/images/50/images/50/colorPalette.png</normaloff>:/images/50/images/50/colorPalette.png</iconset>
+   </property>
+   <property name="text">
+    <string>Add Color Palette...</string>
    </property>
   </action>
  </widget>
