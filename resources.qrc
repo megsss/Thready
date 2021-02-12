@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/images/50">
+        <file>images/50/colorPalette.png</file>
+        <file>images/50/colorWheel.png</file>
+        <file>images/50/exit.png</file>
+        <file>images/50/eyedropper.png</file>
+        <file>images/50/fillColor.png</file>
+        <file>images/50/grid.png</file>
+        <file>images/50/newFile.png</file>
+        <file>images/50/openFile.png</file>
+        <file>images/50/saveFile.png</file>
+    </qresource>
+</RCC>
