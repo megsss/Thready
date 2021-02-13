@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QGraphicsScene>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -14,6 +15,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    QGraphicsScene scene;
 
 private slots:
     void on_actionExit_triggered();
@@ -26,10 +28,11 @@ private slots:
 
     void quitApp();
 
-
     void on_actionUndo_triggered();
 
     void on_actionRedo_triggered();
+
+    void on_actionAdd_Image_triggered();
 
 private:
     Ui::MainWindow *ui;

@@ -3,6 +3,11 @@
 #include <QApplication>
 #include <QDebug>
 #include <QTimer>
+#include <QGraphicsScene>
+#include <QGraphicsView>
+#include <QFileDialog>
+#include <QDir>
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -33,19 +38,24 @@ void MainWindow::quitApp()
 
 void MainWindow::on_actionSave_triggered()
 {
-    //TODO
+    QString file_name = QFileDialog::getSaveFileName(this, "Save project", QDir::homePath());
+    QMessageBox::information(this, "..", file_name);
     qDebug() << "Save triggered";
 }
 
 void MainWindow::on_actionOpen_triggered()
 {
-    //TODO
+    QString file_name = QFileDialog::getOpenFileName(this, tr("Open a project"), QDir::homePath());
+    QMessageBox::information(this, "..", file_name);
     qDebug() << "Open triggered";
 }
 
 void MainWindow::on_actionNew_triggered()
 {
-    //TODO
+    QGraphicsScene scene;
+    //myPopulateScene(&scene);
+    QGraphicsView view(&scene);
+    view.show();
     qDebug() << "New triggered";
 }
 
@@ -59,4 +69,28 @@ void MainWindow::on_actionRedo_triggered()
 {
     //TODO
     qDebug() << "Undo triggered";
+}
+
+void MainWindow::on_actionAdd_Image_triggered()
+{
+    qDebug() << "Add Image triggered";
+    QString file_name = QFileDialog::getOpenFileName(this, tr("Choose image to add"), QDir::homePath(), tr("Images (*.jpeg *.jpg *.png)"));
+    if(QString::compare(file_name, QString()) != 0)
+    {
+        QImage image;
+        bool valid = image.load(file_name);
+
+        if(valid)
+        {
+            image = image.scaledToWidth(ui->graphicsView->width(), Qt::SmoothTransformation);
+            QPixmap pix = QPixmap::fromImage(image);
+            //add 'pix' onto project canvass
+            //ui->graphicsView->add
+        }
+        else{
+            qDebug() << "Image is invalid";
+        }
+    }
+
+
 }
