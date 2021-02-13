@@ -13,6 +13,7 @@ SOURCES += \
     mainwindow.cpp
 
 HEADERS += \
+    catch.hpp \
     mainwindow.h
 
 FORMS += \
