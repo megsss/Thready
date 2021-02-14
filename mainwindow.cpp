@@ -92,5 +92,14 @@ void MainWindow::on_actionAdd_Image_triggered()
         }
     }
 
+}
 
+void MainWindow::on_actionColor_Wheel_triggered()
+{
+    //TODO
+}
+
+void MainWindow::on_actionEyedropper_triggered()
+{
+    //TODO
 }

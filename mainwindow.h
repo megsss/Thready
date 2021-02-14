@@ -34,6 +34,10 @@ private slots:
 
     void on_actionAdd_Image_triggered();
 
+    void on_actionColor_Wheel_triggered();
+
+    void on_actionEyedropper_triggered();
+
 private:
     Ui::MainWindow *ui;
 };
