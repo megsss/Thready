@@ -10,11 +10,13 @@ CONFIG += c++11
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    projectcanvas.cpp
 
 HEADERS += \
     catch.hpp \
-    mainwindow.h
+    mainwindow.h \
+    projectcanvas.h
 
 FORMS += \
     mainwindow.ui

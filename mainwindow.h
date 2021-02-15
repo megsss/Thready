@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <QGraphicsScene>
+#include <QGraphicsView>
+#include "projectcanvas.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -15,7 +17,6 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    QGraphicsScene scene;
 
 private slots:
     void on_actionExit_triggered();
@@ -40,5 +41,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    ProjectCanvas *canvas;
+
 };
 #endif // MAINWINDOW_H

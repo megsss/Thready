@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "projectcanvas.h"
 #include <QApplication>
 #include <QDebug>
 #include <QTimer>
@@ -52,10 +53,9 @@ void MainWindow::on_actionOpen_triggered()
 
 void MainWindow::on_actionNew_triggered()
 {
-    QGraphicsScene scene;
-    //myPopulateScene(&scene);
-    QGraphicsView view(&scene);
-    view.show();
+    statusBar()->showMessage("Create new project");
+    canvas = new ProjectCanvas(this);
+
     qDebug() << "New triggered";
 }
 
@@ -82,7 +82,7 @@ void MainWindow::on_actionAdd_Image_triggered()
 
         if(valid)
         {
-            image = image.scaledToWidth(ui->graphicsView->width(), Qt::SmoothTransformation);
+            //image = image.scaledToWidth(ui->graphicsView->width(), Qt::SmoothTransformation);
             QPixmap pix = QPixmap::fromImage(image);
             //add 'pix' onto project canvass
             //ui->graphicsView->add
