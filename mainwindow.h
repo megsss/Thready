@@ -39,6 +39,12 @@ private slots:
 
     void on_actionEyedropper_triggered();
 
+    void on_actionCursor_triggered();
+
+    void on_actionFill_Color_triggered();
+
+    void on_actionEraser_triggered();
+
 private:
     Ui::MainWindow *ui;
     ProjectCanvas *canvas;

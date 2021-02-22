@@ -20,6 +20,7 @@ ProjectCanvas::ProjectCanvas(QObject *parent) : QGraphicsScene(parent),
 
 void ProjectCanvas::dragMoveEvent(QGraphicsSceneDragDropEvent *event)
 {
+    qDebug() << "ProjectCanvas::dragMoveEvent";
     if(event->mimeData()->property("Key").canConvert(QMetaType::Int)){
         event->acceptProposedAction();
     }else{
@@ -36,7 +37,6 @@ void ProjectCanvas::dropEvent(QGraphicsSceneDragDropEvent *event)
 
         switch (key) {
         case 20:{
-            //Qt Quick Image
             ResizablePixmapItem * pixItem = new ResizablePixmapItem(QPixmap(""));
             pixItem->setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
             addItem(pixItem);
@@ -78,11 +78,6 @@ void ProjectCanvas::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
         }else if(tool == ToolType::Eraser){
             drawEraserAt(event->scenePos());
         }
-        /*
-        else{
-            drawShapeTo(event->scenePos());
-        }
-        */
     }else{
         QGraphicsScene::mouseMoveEvent(event);
     }
@@ -93,11 +88,8 @@ void ProjectCanvas::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
     if((event->button() == Qt::LeftButton) && drawing){
         /*
-        if(lastItem && ((tool == Rect)
-                        || (tool == Ellipse)
-                        || (tool == Star))){
+        if(lastItem && ((tool == Rect)){
             removeItem(lastItem);
-            //We are responsible to release this piece of memory
             delete lastItem;
         }
         */
@@ -123,8 +115,10 @@ void ProjectCanvas::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 void ProjectCanvas::keyPressEvent(QKeyEvent *event)
 {
     if(event->key() == Qt::Key_Delete){
+        qDebug() << "delete key pressed";
         if(selectedItems().count()  > 0){
             QGraphicsItem * itemToRemove = selectedItems()[0];
+            qDebug() << itemToRemove;
             removeItem(itemToRemove);
             delete itemToRemove;
         }
@@ -192,43 +186,6 @@ void ProjectCanvas::eraseStrokesUnder(QGraphicsEllipseItem *item)
         }
     }
 }
-/*
-void ProjectCanvas::drawShapeTo(const QPointF &endPoint)
-{
-    if(lastItem){
-        removeItem(lastItem);
-        delete lastItem;
-    }
-
-    QRectF itemRect(startingPoint,endPoint);
-
-    if(tool == Rect){
-        ResizableRectItem * mRect = new ResizableRectItem();
-        mRect->setRect(itemRect.normalized());
-        mRect->setBrush(Qt::blue);
-        addItem(mRect);
-        mRect->setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
-        lastItem = mRect;
-    }
-
-    if(tool == Ellipse){
-        ResizableEllipseItem * ellipseItem = new ResizableEllipseItem();
-        ellipseItem->setRect(itemRect.normalized());
-        ellipseItem->setBrush(Qt::blue);
-        addItem(ellipseItem);
-        ellipseItem->setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
-        lastItem = ellipseItem;
-    }
-    if(tool == Star){
-        ResizableStarItem * starItem = new ResizableStarItem();
-        starItem->setRect(itemRect.normalized());
-        starItem->setBrush(Qt::blue);
-        addItem(starItem);
-        starItem->setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
-        lastItem = starItem;
-    }
-}
-*/
 
 ProjectCanvas::ToolType ProjectCanvas::getTool() const
 {
@@ -242,10 +199,10 @@ void ProjectCanvas::setTool(const ToolType &value)
 
 void ProjectCanvas::addImageItem(const QString &path)
 {
-    ResizablePixmapItem * pixItem = new ResizablePixmapItem(QPixmap(path));
-    pixItem->setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
-    addItem(pixItem);
+    ResizablePixmapItem * image = new ResizablePixmapItem(QPixmap(path));
+    image->setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
+    addItem(image);
 
-    pixItem->setPos(QPointF(0,0) - QPointF(pixItem->boundingRect().width()/2,
-                                           pixItem->boundingRect().height()/2));
+    image->setPos(QPointF(300,300) - QPointF(image->boundingRect().width()/2,
+                                           image->boundingRect().height()/2));
 }
