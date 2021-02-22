@@ -59,7 +59,9 @@ void MainWindow::on_actionNew_triggered()
     canvas = new ProjectCanvas(this);
     View * view = new View(this);
     view->setScene(canvas);
-    setCentralWidget(view);
+
+    ui->canvasLayout->setGeometry(QRect(0, 0, 750, 990));
+    ui->canvasLayout->addWidget(view);
 
     qDebug() << "New triggered";
 }

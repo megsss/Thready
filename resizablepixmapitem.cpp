@@ -6,23 +6,20 @@
 ResizablePixmapItem::ResizablePixmapItem(QPixmap pixmap) :
     mPixmap(pixmap)
 {
-     setRect (QRectF(10,10,300,300));
+     setRect (QRectF(10,10,200,200));
      setOwnerItem(this);
 }
 
 QRectF ResizablePixmapItem::selectorFrameBounds() const
 {
-    return  rect();
+    return rect();
 }
 
 void ResizablePixmapItem::setSelectorFrameBounds(QRectF boundsRect)
 {
-
     prepareGeometryChange();
     setRect(boundsRect);
     update();
-
-
 }
 
 QRectF ResizablePixmapItem::boundingRect() const
@@ -36,19 +33,13 @@ void ResizablePixmapItem::paint(QPainter *painter, const QStyleOptionGraphicsIte
     Q_UNUSED(widget);
     painter->save();
 
-//    painter->setBrush(brush());
+    //painter->setBrush(brush());
+    //painter->drawRect(rect());
 
-//    painter->drawRect(rect());
     painter->drawPixmap(boundingRect(),mPixmap,mPixmap.rect());
-
     drawHandlesIfNecessary();
-
     painter->restore();
 }
-
-
-
-
 
 QPixmap ResizablePixmapItem::getPixmap() const
 {
