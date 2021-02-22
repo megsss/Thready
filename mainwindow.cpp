@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "projectcanvas.h"
+#include "view.h"
 #include <QApplication>
 #include <QDebug>
 #include <QTimer>
@@ -15,6 +16,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
 }
 
 MainWindow::~MainWindow()
@@ -55,6 +57,9 @@ void MainWindow::on_actionNew_triggered()
 {
     statusBar()->showMessage("Create new project");
     canvas = new ProjectCanvas(this);
+    View * view = new View(this);
+    view->setScene(canvas);
+    setCentralWidget(view);
 
     qDebug() << "New triggered";
 }
@@ -74,24 +79,13 @@ void MainWindow::on_actionRedo_triggered()
 void MainWindow::on_actionAdd_Image_triggered()
 {
     qDebug() << "Add Image triggered";
-    QString file_name = QFileDialog::getOpenFileName(this, tr("Choose image to add"), QDir::homePath(), tr("Images (*.jpeg *.jpg *.png)"));
-    if(QString::compare(file_name, QString()) != 0)
-    {
-        QImage image;
-        bool valid = image.load(file_name);
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"),
+                                                    "/home",
+                                                    tr("Images (*.png *.jpg)"));
+    if(fileName.isNull())
+        return;
 
-        if(valid)
-        {
-            //image = image.scaledToWidth(ui->graphicsView->width(), Qt::SmoothTransformation);
-            QPixmap pix = QPixmap::fromImage(image);
-            //add 'pix' onto project canvass
-            //ui->graphicsView->add
-        }
-        else{
-            qDebug() << "Image is invalid";
-        }
-    }
-
+    canvas->addImageItem(fileName);
 }
 
 void MainWindow::on_actionColor_Wheel_triggered()

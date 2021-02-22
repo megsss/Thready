@@ -9,14 +9,22 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    handleitem.cpp \
     main.cpp \
     mainwindow.cpp \
-    projectcanvas.cpp
+    projectcanvas.cpp \
+    resizablehandlerect.cpp \
+    resizablepixmapitem.cpp \
+    view.cpp
 
 HEADERS += \
     catch.hpp \
+    handleitem.h \
     mainwindow.h \
-    projectcanvas.h
+    projectcanvas.h \
+    resizablehandlerect.h \
+    resizablepixmapitem.h \
+    view.h
 
 FORMS += \
     mainwindow.ui
