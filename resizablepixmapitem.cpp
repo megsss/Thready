@@ -50,3 +50,9 @@ void ResizablePixmapItem::setPixmap(const QPixmap &value)
 {
     mPixmap = value;
 }
+
+void ResizablePixmapItem::deletePixmap(const QPixmap &value)
+{
+    mPixmap = value;
+    deletePixmap(mPixmap);
+}

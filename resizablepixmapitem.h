@@ -19,6 +19,7 @@ public:
 
     QPixmap getPixmap() const;
     void setPixmap(const QPixmap &value);
+    void deletePixmap(const QPixmap &value);
 
 private:
     QPixmap mPixmap;

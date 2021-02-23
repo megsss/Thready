@@ -114,8 +114,8 @@ void ProjectCanvas::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 
 void ProjectCanvas::keyPressEvent(QKeyEvent *event)
 {
-    if(event->key() == Qt::Key_Delete){
-        qDebug() << "delete key pressed";
+    if(event->key() == Qt::Key_Backspace){
+        qDebug() << "delete keys pressed";
         if(selectedItems().count()  > 0){
             QGraphicsItem * itemToRemove = selectedItems()[0];
             qDebug() << itemToRemove;
@@ -200,7 +200,7 @@ void ProjectCanvas::setTool(const ToolType &value)
 void ProjectCanvas::addImageItem(const QString &path)
 {
     ResizablePixmapItem * image = new ResizablePixmapItem(QPixmap(path));
-    image->setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
+    image->setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemIsFocusable);
     addItem(image);
 
     image->setPos(QPointF(300,300) - QPointF(image->boundingRect().width()/2,
