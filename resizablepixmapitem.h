@@ -11,15 +11,11 @@ public:
     explicit ResizablePixmapItem(QPixmap pixmap);
 
     QRectF selectorFrameBounds() const override;
-    void setSelectorFrameBounds(QRectF boundsRect) override;
-
     QRectF boundingRect() const override;
-
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
-
     QPixmap getPixmap() const;
+    void setSelectorFrameBounds(QRectF boundsRect) override;
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     void setPixmap(const QPixmap &value);
-    void deletePixmap(const QPixmap &value);
 
 private:
     QPixmap mPixmap;
