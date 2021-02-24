@@ -18,6 +18,7 @@ ProjectCanvas::ProjectCanvas(QObject *parent) : QGraphicsScene(parent),
     setSceneRect(0, 0, 750, 990);
 }
 
+//drag shapes and images
 void ProjectCanvas::dragMoveEvent(QGraphicsSceneDragDropEvent *event)
 {
     qDebug() << "ProjectCanvas::dragMoveEvent";
@@ -28,6 +29,8 @@ void ProjectCanvas::dragMoveEvent(QGraphicsSceneDragDropEvent *event)
     }
 }
 
+
+//add aida templates here on drop event
 void ProjectCanvas::dropEvent(QGraphicsSceneDragDropEvent *event)
 {
     if(event->mimeData()->property("Key").canConvert(QMetaType::Int)){
@@ -55,6 +58,8 @@ void ProjectCanvas::dropEvent(QGraphicsSceneDragDropEvent *event)
 
 }
 
+
+//create starting point for tools when left mouse button is clicked
 void ProjectCanvas::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     if(event->button() == Qt::LeftButton){
@@ -70,6 +75,7 @@ void ProjectCanvas::mousePressEvent(QGraphicsSceneMouseEvent *event)
     }
 }
 
+//tool actions when left mouse button is clicked and moved
 void ProjectCanvas::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
     if((event->buttons() & Qt::LeftButton) && drawing){
@@ -94,11 +100,13 @@ void ProjectCanvas::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
         }
         */
 
+        //when mouse released, pen no longer drawing - set to false
         if(tool == ToolType::Pen){
             lineGroup = nullptr;
             drawing = false;
         }
 
+        //remove eraser cursor circle & set drawing to false
         if(tool == ToolType::Eraser){
             removeItem(lastEraserCircle);
             delete lastEraserCircle;
@@ -112,6 +120,7 @@ void ProjectCanvas::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 
 }
 
+//delete item from canvas with backspace button
 void ProjectCanvas::keyPressEvent(QKeyEvent *event)
 {
     if(event->key() == Qt::Key_Backspace){
@@ -126,6 +135,7 @@ void ProjectCanvas::keyPressEvent(QKeyEvent *event)
     QGraphicsScene::keyPressEvent(event);
 }
 
+// eraser/pen - draw line to endpoint (when mouse is released)
 void ProjectCanvas::drawLineTo(const QPointF &endPoint)
 {
     if(!lineGroup){
@@ -145,6 +155,7 @@ void ProjectCanvas::drawLineTo(const QPointF &endPoint)
     lastPenPoint = endPoint;
 }
 
+//draw eraser under cursor
 void ProjectCanvas::drawEraserAt(const QPointF &endPoint)
 {
     if(!lastEraserCircle){
@@ -156,6 +167,7 @@ void ProjectCanvas::drawEraserAt(const QPointF &endPoint)
 
 }
 
+//erase lines underneath the eraser
 void ProjectCanvas::eraseStrokesUnder(QGraphicsEllipseItem *item)
 {
     QList<QGraphicsItem *> itemsToRemove = item->collidingItems();
@@ -180,7 +192,7 @@ void ProjectCanvas::eraseStrokesUnder(QGraphicsEllipseItem *item)
     //Remove group items that don't have any children.
     foreach (QGraphicsItemGroup * group, groupItems) {
         if(group->childItems().count() == 0){
-            qDebug() << "Group item has no child. Removing it";
+            qDebug() << "Group item has no child. Removing.";
             removeItem(group);
             delete group;
         }

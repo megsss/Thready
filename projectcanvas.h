@@ -36,8 +36,8 @@ protected:
 
 private:
     void drawLineTo(const QPointF &endPoint);
-    void drawEraserAt(const QPointF & endPoint);
-    void eraseStrokesUnder(QGraphicsEllipseItem * item);
+    void drawEraserAt(const QPointF &endPoint);
+    void eraseStrokesUnder(QGraphicsEllipseItem *item);
 
     ToolType tool;
     bool drawing;
