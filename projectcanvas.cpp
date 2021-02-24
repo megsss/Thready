@@ -138,7 +138,7 @@ void ProjectCanvas::drawLineTo(const QPointF &endPoint)
     QGraphicsLineItem  *localLine = new QGraphicsLineItem(QLineF(lastPenPoint,endPoint));
     QPen mPen;
     mPen.setWidth(3);
-    mPen.setColor(Qt::green);
+    mPen.setColor(Qt::black);
     localLine->setPen(mPen);
     lineGroup->addToGroup(localLine);
 
