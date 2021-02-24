@@ -14,5 +14,7 @@
         <file>images/50/addImage.png</file>
         <file>images/50/redo.png</file>
         <file>images/50/undo.png</file>
+        <file>images/50/cursor.png</file>
+        <file>images/50/eraser.png</file>
     </qresource>
 </RCC>

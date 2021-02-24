@@ -83,7 +83,19 @@
   <property name="windowOpacity">
    <double>1.000000000000000</double>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="horizontalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>40</y>
+      <width>781</width>
+      <height>601</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="canvasLayout"/>
+   </widget>
+  </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
@@ -114,6 +126,7 @@
     <addaction name="actionAdd_Aida_Template"/>
     <addaction name="actionAdd_Color_Palette"/>
     <addaction name="separator"/>
+    <addaction name="actionCursor"/>
     <addaction name="actionEyedropper"/>
     <addaction name="actionFill_Color"/>
     <addaction name="actionColor_Wheel"/>
@@ -152,6 +165,8 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionCursor"/>
+   <addaction name="actionEraser"/>
    <addaction name="actionColor_Wheel"/>
    <addaction name="actionAdd_Image"/>
    <addaction name="actionAdd_Color_Palette"/>
@@ -268,6 +283,24 @@
    </property>
    <property name="text">
     <string>Color Wheel</string>
+   </property>
+  </action>
+  <action name="actionCursor">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/images/50/cursor.png</normaloff>:/images/50/cursor.png</iconset>
+   </property>
+   <property name="text">
+    <string>Cursor</string>
+   </property>
+  </action>
+  <action name="actionEraser">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/images/50/eraser.png</normaloff>:/images/50/eraser.png</iconset>
+   </property>
+   <property name="text">
+    <string>Eraser</string>
    </property>
   </action>
  </widget>

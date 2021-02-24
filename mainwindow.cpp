@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "projectcanvas.h"
+#include "view.h"
 #include <QApplication>
 #include <QDebug>
 #include <QTimer>
@@ -15,6 +16,8 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->canvasLayout->setGeometry(QRect(0, 0, 750, 990));
+
 }
 
 MainWindow::~MainWindow()
@@ -53,10 +56,13 @@ void MainWindow::on_actionOpen_triggered()
 
 void MainWindow::on_actionNew_triggered()
 {
+    qDebug() << "New triggered";
     statusBar()->showMessage("Create new project");
     canvas = new ProjectCanvas(this);
+    View * view = new View(this);
+    view->setScene(canvas);
 
-    qDebug() << "New triggered";
+    ui->canvasLayout->addWidget(view);
 }
 
 void MainWindow::on_actionUndo_triggered()
@@ -74,32 +80,41 @@ void MainWindow::on_actionRedo_triggered()
 void MainWindow::on_actionAdd_Image_triggered()
 {
     qDebug() << "Add Image triggered";
-    QString file_name = QFileDialog::getOpenFileName(this, tr("Choose image to add"), QDir::homePath(), tr("Images (*.jpeg *.jpg *.png)"));
-    if(QString::compare(file_name, QString()) != 0)
-    {
-        QImage image;
-        bool valid = image.load(file_name);
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"),
+                                                    "/home",
+                                                    tr("Images (*.png *.jpg *.jpeg)"));
+    if(fileName.isNull())
+        return;
 
-        if(valid)
-        {
-            //image = image.scaledToWidth(ui->graphicsView->width(), Qt::SmoothTransformation);
-            QPixmap pix = QPixmap::fromImage(image);
-            //add 'pix' onto project canvass
-            //ui->graphicsView->add
-        }
-        else{
-            qDebug() << "Image is invalid";
-        }
-    }
-
+    canvas->addImageItem(fileName);
 }
 
 void MainWindow::on_actionColor_Wheel_triggered()
 {
     //TODO
+    //insert a color picker widget
 }
 
 void MainWindow::on_actionEyedropper_triggered()
 {
-    //TODO
+    statusBar()->showMessage("Current tool is Eyedropper");
+    canvas->setTool(ProjectCanvas::Eyedropper);
+}
+
+void MainWindow::on_actionCursor_triggered()
+{
+    statusBar()->showMessage("Current tool is Cursor");
+    canvas->setTool(ProjectCanvas::Cursor);
+}
+
+void MainWindow::on_actionFill_Color_triggered()
+{
+    statusBar()->showMessage("Current tool is Fill");
+    canvas->setTool(ProjectCanvas::Fill);
+}
+
+void MainWindow::on_actionEraser_triggered()
+{
+    statusBar()->showMessage("Current tool is Eraser");
+    canvas->setTool(ProjectCanvas::Eraser);
 }
