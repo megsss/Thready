@@ -6,7 +6,7 @@
 #include <QPainter>
 
 View::View(QWidget *parent) : QGraphicsView(parent),drawingSelection(false),
-    lastRect(nullptr),drawGridLines(false)
+    lastRect(nullptr)
 {
 
 }
@@ -94,43 +94,15 @@ void View::drawBackground(QPainter *painter, const QRectF &rect)
 
     painter->restore();
 
-    //    QGraphicsView::drawBackground(painter,rect);
-
 }
 
-/*
-void View::drawForeground(QPainter *painter, const QRectF &rect)
+QColor View::getBackgroundColor() const
 {
-
-    if(drawGridLines){
-        painter->save();
-        //-800,-600,1600,1200
-        painter->setPen(QColor(100, 44, 18, 30));
-        //Vertical lines
-        for( int i = 0 ; i < 32 ; i++){
-            painter->drawLine( -800 + (50 *i) , -600, -800 + (50 *i) ,600 );
-        }
-        //Horizantal lines
-        for( int i =0 ; i < 24 ; i++){
-            painter->drawLine(-800, -600 + (i * 50), 800, -600 + (i * 50));
-        }
-        painter->restore();
-    }else{
-        QGraphicsView::drawForeground(painter,rect);
-    }
-
+    return backgroundColor;
 }
 
-bool View::getDrawGridLines() const
+void View::setBackgroundColor(const QColor &value)
 {
-    return drawGridLines;
+    backgroundColor = value;
+    scene()->update();
 }
-
-void View::setDrawGridLines(bool value)
-{
-    if(drawGridLines != value){
-        drawGridLines = value;
-        scene()->update();
-    }
-}
-*/

@@ -1,7 +1,13 @@
 <RCC>
-    <qresource prefix="/images/50">
+    <qresource prefix="/">
+        <file>images/50/addImage.png</file>
+        <file>images/50/redo.png</file>
+        <file>images/50/undo.png</file>
+        <file>images/50/cursor.png</file>
+        <file>images/50/eraser.png</file>
         <file>images/50/colorPalette.png</file>
         <file>images/50/colorWheel.png</file>
+        <file>images/50/cursor-50.png</file>
         <file>images/50/exit.png</file>
         <file>images/50/eyedropper.png</file>
         <file>images/50/fillColor.png</file>
@@ -9,12 +15,12 @@
         <file>images/50/newFile.png</file>
         <file>images/50/openFile.png</file>
         <file>images/50/saveFile.png</file>
-    </qresource>
-    <qresource prefix="/">
-        <file>images/50/addImage.png</file>
-        <file>images/50/redo.png</file>
-        <file>images/50/undo.png</file>
-        <file>images/50/cursor.png</file>
-        <file>images/50/eraser.png</file>
+        <file>images/32/cursor_32.png</file>
+        <file>images/32/eyedropper_32.png</file>
+        <file>images/32/pen_32.png</file>
+        <file>images/32/fill_32.png</file>
+        <file>images/50/dropper-50.png</file>
+        <file>images/50/pen-50.png</file>
+        <file>images/32/dropper_32.png</file>
     </qresource>
 </RCC>

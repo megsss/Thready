@@ -8,22 +8,28 @@ CONFIG += c++11
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+#CODECOV_TOKEN='02da3399-aa54-4478-8717-724733a57f72'
+
 SOURCES += \
+    colorspace.cpp \
     handleitem.cpp \
     main.cpp \
     mainwindow.cpp \
     projectcanvas.cpp \
     resizablehandlerect.cpp \
     resizablepixmapitem.cpp \
+    rgbcolor.cpp \
     view.cpp
 
 HEADERS += \
     catch.hpp \
+    colorspace.h \
     handleitem.h \
     mainwindow.h \
     projectcanvas.h \
     resizablehandlerect.h \
     resizablepixmapitem.h \
+    rgbcolor.h \
     view.h
 
 FORMS += \

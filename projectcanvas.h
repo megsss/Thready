@@ -22,6 +22,21 @@ public:
 
     void addImageItem(const QString &path);
 
+    QColor getPenColor() const;
+    void setPenColor(const QColor &value);
+
+    int getPenWidth() const;
+    void setPenWidth(int value);
+
+    Qt::PenStyle getPenStyle() const;
+    void setPenStyle(const Qt::PenStyle &value);
+
+    QColor getFillColor() const;
+    void setFillColor(const QColor &value);
+
+    Qt::BrushStyle getBrushStyle() const;
+    void setBrushStyle(const Qt::BrushStyle &value);
+
 signals:
 
 public slots:
@@ -49,6 +64,12 @@ private:
 
     QGraphicsLineItem * horGuideLine;
     QGraphicsLineItem * verGuideLine;
+
+    QColor penColor;
+    int penWidth;
+    Qt::PenStyle penStyle;
+    QColor fillColor;
+    Qt::BrushStyle brushStyle;
 };
 
 

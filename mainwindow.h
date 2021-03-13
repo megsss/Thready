@@ -4,7 +4,9 @@
 #include <QMainWindow>
 #include <QGraphicsScene>
 #include <QGraphicsView>
+#include <QColorDialog>
 #include "projectcanvas.h"
+#include "view.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -17,6 +19,8 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+    void CreateNewProject();
 
 private slots:
     void on_actionExit_triggered();
@@ -45,9 +49,14 @@ private slots:
 
     void on_actionEraser_triggered();
 
+    void on_actionPen_triggered();
+
 private:
+    void setActiveTool(ProjectCanvas::ToolType tool);
     Ui::MainWindow *ui;
     ProjectCanvas *canvas;
+    View * view;
+    QColorDialog colorDialog;
 
 };
 #endif // MAINWINDOW_H

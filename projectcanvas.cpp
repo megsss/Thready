@@ -13,7 +13,12 @@ ProjectCanvas::ProjectCanvas(QObject *parent) : QGraphicsScene(parent),
     drawing(false),
     lineGroup(nullptr),
     lastEraserCircle(nullptr),
-    lastItem (nullptr)
+    lastItem (nullptr),
+    penColor(Qt::black),
+    penWidth(2),
+    penStyle(Qt::SolidLine),
+    fillColor(Qt::gray),
+    brushStyle(Qt::SolidPattern)
 {
     setSceneRect(0, 0, 750, 990);
 }
@@ -93,13 +98,6 @@ void ProjectCanvas::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 void ProjectCanvas::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 {
     if((event->button() == Qt::LeftButton) && drawing){
-        /*
-        if(lastItem && ((tool == Rect)){
-            removeItem(lastItem);
-            delete lastItem;
-        }
-        */
-
         //when mouse released, pen no longer drawing - set to false
         if(tool == ToolType::Pen){
             lineGroup = nullptr;
@@ -217,4 +215,54 @@ void ProjectCanvas::addImageItem(const QString &path)
 
     image->setPos(QPointF(300,300) - QPointF(image->boundingRect().width()/2,
                                            image->boundingRect().height()/2));
+}
+
+Qt::BrushStyle ProjectCanvas::getBrushStyle() const
+{
+    return brushStyle;
+}
+
+void ProjectCanvas::setBrushStyle(const Qt::BrushStyle &value)
+{
+    brushStyle = value;
+}
+
+QColor ProjectCanvas::getFillColor() const
+{
+    return fillColor;
+}
+
+void ProjectCanvas::setFillColor(const QColor &value)
+{
+    fillColor = value;
+}
+
+Qt::PenStyle ProjectCanvas::getPenStyle() const
+{
+    return penStyle;
+}
+
+void ProjectCanvas::setPenStyle(const Qt::PenStyle &value)
+{
+    penStyle = value;
+}
+
+int ProjectCanvas::getPenWidth() const
+{
+    return penWidth;
+}
+
+void ProjectCanvas::setPenWidth(int value)
+{
+    penWidth = value;
+}
+
+QColor ProjectCanvas::getPenColor() const
+{
+    return penColor;
+}
+
+void ProjectCanvas::setPenColor(const QColor &value)
+{
+    penColor = value;
 }
