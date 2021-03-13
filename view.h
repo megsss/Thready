@@ -9,9 +9,8 @@ class View : public QGraphicsView
     Q_OBJECT
 public:
     explicit View(QWidget *parent = nullptr);
-
-    bool getDrawGridLines() const;
-    void setDrawGridLines(bool value);
+    QColor getBackgroundColor() const;
+    void setBackgroundColor(const QColor &value);
 
 signals:
 
@@ -30,7 +29,7 @@ private:
     QPoint selectTopLeft;
     bool drawingSelection;
     QGraphicsRectItem * lastRect;
-    bool drawGridLines;
+    QColor backgroundColor;
 
 
 };
