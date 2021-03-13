@@ -12,6 +12,8 @@
 #include <QMessageBox>
 #include <QColorDialog>
 
+
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -19,15 +21,20 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     ui->canvasLayout->setGeometry(QRect(0, 0, 750, 990));
     colorDialog.open();
-
-
-
-
+    CreateNewProject();
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::CreateNewProject()
+{
+    canvas = new ProjectCanvas(this);
+    View * view = new View(this);
+    view->setScene(canvas);
+    ui->canvasLayout->addWidget(view);
 }
 
 
@@ -63,11 +70,7 @@ void MainWindow::on_actionNew_triggered()
 {
     qDebug() << "New triggered";
     statusBar()->showMessage("Create new project");
-    canvas = new ProjectCanvas(this);
-    View * view = new View(this);
-    view->setScene(canvas);
-
-    ui->canvasLayout->addWidget(view);
+    CreateNewProject();
 }
 
 void MainWindow::on_actionUndo_triggered()
@@ -101,12 +104,19 @@ void MainWindow::on_actionColor_Wheel_triggered()
 
 void MainWindow::on_actionEyedropper_triggered()
 {
+    canvas->setTool(ProjectCanvas::Eyedropper);
+    setActiveTool(ProjectCanvas::Eyedropper);
+    statusBar()->showMessage("Current tool is Eyedropper");
+    QColor color = colorDialog.getColor(Qt::white, this);
+    color.toRgb();
+    QString colorName = color.name();
+    statusBar()->showMessage("Color chosen: " + colorName);
+    //qDebug() << colorName;
     QCursor cursor(QPixmap(":/images/32/eyedropper_32.png"),32,32);
     //view->setCursor(cursor);
     setCursor(cursor);
-    statusBar()->showMessage("Current tool is Eyedropper");
-    canvas->setTool(ProjectCanvas::Eyedropper);
-    setActiveTool(ProjectCanvas::Eyedropper);
+
+
 }
 
 void MainWindow::on_actionCursor_triggered()
@@ -127,6 +137,14 @@ void MainWindow::on_actionFill_Color_triggered()
     statusBar()->showMessage("Current tool is Fill");
     canvas->setTool(ProjectCanvas::Fill);
     setActiveTool(ProjectCanvas::Fill);
+    QColor color = colorDialog.getColor(Qt::black,this);
+
+    if(color.isValid()){
+        canvas->setFillColor(color);
+        //ui->brushColorButton->setButtonColor(color);
+        //QString colorQss = QString("background-color: %1").arg(color.name());
+        //ui->brushColorButton->setStyleSheet(colorQss);
+    }
 
 }
 
@@ -148,14 +166,13 @@ void MainWindow::on_actionPen_triggered()
     statusBar()->showMessage("Current tool is Pen");
     canvas->setTool(ProjectCanvas::Pen);
     setActiveTool(ProjectCanvas::Pen);
-    QColor color = QColorDialog::getColor(Qt::black,this);
+    QColor color = colorDialog.getColor(Qt::black,this);
 
     if(color.isValid()){
         canvas->setFillColor(color);
         //ui->brushColorButton->setButtonColor(color);
         //QString colorQss = QString("background-color: %1").arg(color.name());
         //ui->brushColorButton->setStyleSheet(colorQss);
-
     }
 }
 
