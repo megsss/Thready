@@ -11,7 +11,10 @@ CONFIG += c++11
 #CODECOV_TOKEN='02da3399-aa54-4478-8717-724733a57f72'
 
 SOURCES += \
+    colorpalette.cpp \
     colorspace.cpp \
+    colorwidget.cpp \
+    doubleclickbutton.cpp \
     handleitem.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -22,8 +25,10 @@ SOURCES += \
     view.cpp
 
 HEADERS += \
-    catch.hpp \
+    colorpalette.h \
     colorspace.h \
+    colorwidget.h \
+    doubleclickbutton.h \
     handleitem.h \
     mainwindow.h \
     projectcanvas.h \

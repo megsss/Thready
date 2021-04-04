@@ -20,8 +20,10 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     ui->canvasLayout->setGeometry(QRect(0, 0, 750, 990));
-    colorDialog.open();
+    //colorDialog.open();
     CreateNewProject();
+    colorWidget = new ColorWidget(this);
+    ui->colorWidgetLayout->addWidget(colorWidget);
 }
 
 MainWindow::~MainWindow()
@@ -99,7 +101,8 @@ void MainWindow::on_actionAdd_Image_triggered()
 
 void MainWindow::on_actionColor_Wheel_triggered()
 {
-    colorDialog.open();
+    qDebug() << "needs updating";
+    //colorDialog.open();
 }
 
 void MainWindow::on_actionEyedropper_triggered()
