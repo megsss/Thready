@@ -78,7 +78,7 @@
    </palette>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Thready</string>
   </property>
   <property name="windowOpacity">
    <double>1.000000000000000</double>
@@ -95,16 +95,52 @@
     </property>
     <layout class="QHBoxLayout" name="canvasLayout"/>
    </widget>
-   <widget class="QWidget" name="horizontalLayoutWidget_2">
+   <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>1190</x>
-      <y>40</y>
-      <width>751</width>
-      <height>711</height>
+      <x>910</x>
+      <y>50</y>
+      <width>671</width>
+      <height>781</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="colorWidgetLayout"/>
+    <layout class="QVBoxLayout" name="colorWidgetlLayout">
+     <item>
+      <widget class="QGroupBox" name="groupBox">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="title">
+        <string notr="true">Palette:</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+       </property>
+       <widget class="QWidget" name="verticalLayoutWidget_2">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>30</y>
+          <width>601</width>
+          <height>91</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="colorPaletteLayout"/>
+       </widget>
+       <widget class="QWidget" name="verticalLayoutWidget_3">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>150</y>
+          <width>591</width>
+          <height>541</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="colorDialogLayout"/>
+       </widget>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

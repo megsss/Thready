@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "projectcanvas.h"
 #include "view.h"
+#include "colorpalette.h"
 #include <QApplication>
 #include <QDebug>
 #include <QTimer>
@@ -20,10 +21,10 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     ui->canvasLayout->setGeometry(QRect(0, 0, 750, 990));
-    //colorDialog.open();
+    colorDialog.open();
     CreateNewProject();
-    colorWidget = new ColorWidget(this);
-    ui->colorWidgetLayout->addWidget(colorWidget);
+    colorPalette = new ColorPalette(this);
+    ui->colorWidgetLayout->addWidget(colorPalette);
 }
 
 MainWindow::~MainWindow()
@@ -101,8 +102,7 @@ void MainWindow::on_actionAdd_Image_triggered()
 
 void MainWindow::on_actionColor_Wheel_triggered()
 {
-    qDebug() << "needs updating";
-    //colorDialog.open();
+    colorDialog.show();
 }
 
 void MainWindow::on_actionEyedropper_triggered()

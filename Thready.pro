@@ -12,8 +12,8 @@ CONFIG += c++11
 
 SOURCES += \
     colorpalette.cpp \
+    colorpalettelist.cpp \
     colorspace.cpp \
-    colorwidget.cpp \
     doubleclickbutton.cpp \
     handleitem.cpp \
     main.cpp \
@@ -26,8 +26,8 @@ SOURCES += \
 
 HEADERS += \
     colorpalette.h \
+    colorpalettelist.h \
     colorspace.h \
-    colorwidget.h \
     doubleclickbutton.h \
     handleitem.h \
     mainwindow.h \
