@@ -9,6 +9,7 @@ public:
     ColorConverter();
     QColor RGBtoDMC(QColor color);
     QColor DMCtoRGB(QColor color);
+    void findClosestColor(QColor color);
 };
 
 #endif // COLORCONVERTER_H
