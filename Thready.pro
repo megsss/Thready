@@ -11,6 +11,7 @@ CONFIG += c++11
 #CODECOV_TOKEN='02da3399-aa54-4478-8717-724733a57f72'
 
 SOURCES += \
+    colorconverter.cpp \
     colorpalette.cpp \
     colorpalettelist.cpp \
     colorspace.cpp \
@@ -21,10 +22,10 @@ SOURCES += \
     projectcanvas.cpp \
     resizablehandlerect.cpp \
     resizablepixmapitem.cpp \
-    rgbcolor.cpp \
     view.cpp
 
 HEADERS += \
+    colorconverter.h \
     colorpalette.h \
     colorpalettelist.h \
     colorspace.h \
@@ -34,7 +35,6 @@ HEADERS += \
     projectcanvas.h \
     resizablehandlerect.h \
     resizablepixmapitem.h \
-    rgbcolor.h \
     view.h
 
 FORMS += \
