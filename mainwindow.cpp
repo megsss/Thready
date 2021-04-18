@@ -23,8 +23,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->canvasLayout->setGeometry(QRect(0, 0, 750, 990));
     colorDialog.open();
     CreateNewProject();
-    colorPalette = new ColorPalette(this);
-    ui->colorWidgetLayout->addWidget(colorPalette);
+    //colorPalette = new ColorPalette(this);
+    //ui->colorWidgetLayout->addWidget(colorPalette);
 }
 
 MainWindow::~MainWindow()
