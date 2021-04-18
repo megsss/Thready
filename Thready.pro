@@ -11,25 +11,30 @@ CONFIG += c++11
 #CODECOV_TOKEN='02da3399-aa54-4478-8717-724733a57f72'
 
 SOURCES += \
+    colorconverter.cpp \
+    colorpalette.cpp \
+    colorpalettelist.cpp \
     colorspace.cpp \
+    doubleclickbutton.cpp \
     handleitem.cpp \
     main.cpp \
     mainwindow.cpp \
     projectcanvas.cpp \
     resizablehandlerect.cpp \
     resizablepixmapitem.cpp \
-    rgbcolor.cpp \
     view.cpp
 
 HEADERS += \
-    catch.hpp \
+    colorconverter.h \
+    colorpalette.h \
+    colorpalettelist.h \
     colorspace.h \
+    doubleclickbutton.h \
     handleitem.h \
     mainwindow.h \
     projectcanvas.h \
     resizablehandlerect.h \
     resizablepixmapitem.h \
-    rgbcolor.h \
     view.h
 
 FORMS += \

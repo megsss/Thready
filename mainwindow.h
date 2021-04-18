@@ -6,6 +6,7 @@
 #include <QGraphicsView>
 #include <QColorDialog>
 #include "projectcanvas.h"
+#include "colorpalette.h"
 #include "view.h"
 
 QT_BEGIN_NAMESPACE
@@ -56,6 +57,7 @@ private:
     Ui::MainWindow *ui;
     ProjectCanvas *canvas;
     View * view;
+    ColorPalette * colorPalette;
     QColorDialog colorDialog;
 
 };
