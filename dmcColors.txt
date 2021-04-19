@@ -1,4 +1,4 @@
-Floss#	Description         Red     Green   Blue    RGB
+Floss#	Name                Red     Green   Blue    RGB
 3713	Salmon Very Light   255     226     226     FFE2E2
 761	Salmon Light        255     201     201     FFC9C9
 760	Salmon              245     173     173     F5ADAD
@@ -30,31 +30,31 @@ Floss#	Description         Red     Green   Blue    RGB
 957	Geranium Pale       253     181     181     FDB5B5
 956	Geranium            255     145     145     FF9191
 309	Rose Dark           86      74      74      BA4A4A
-963	Dusty Rose Ult Vy Lt	255	215	215	FFD7D7
+963	Dusty Rose Ult Vy Lt    255	215	215	FFD7D7
 3716	Dusty Rose Med Vy Lt	255	189	189	FFBDBD
-962	Dusty Rose Medium	230	138	138	E68A8A
-961	Dusty Rose Dark	207	115	115	CF7373
-3833	Raspberry Light	234	134	153	EA8699
-3832	Raspberry Medium	219	85	110	DB556E
-3831	Raspberry Dark	179	47	72	B32F48
-777	Raspberry Very Dark	145	53	70	913546
-819	Baby Pink Light	255	238	235	FFEEEB
-3326	Rose Light	251	173	180	FBADB4
-776	Pink Medium	252	176	185	FCB0B9
-899	Rose Medium	242	118	136	F27688
-335	Rose	238	84	110	EE546E
-326	Rose Very Dark	179	59	75	B33B4B
-151	Dusty Rose Vry Lt	240	206	212	F0CED4
-3354	Dusty Rose Light	228	166	172	E4A6AC
-3733	Dusty Rose	232	135	155	E8879B
+962	Dusty Rose Medium   230     138     138     E68A8A
+961	Dusty Rose Dark     207     115     115     CF7373
+3833	Raspberry Light     234     134     153     EA8699
+3832	Raspberry Medium    219     85      110     DB556E
+3831	Raspberry Dark      179     47      72      B32F48
+777	Raspberry Very Dark 145     53      70      913546
+819	Baby Pink Light     255     238     235     FFEEEB
+3326	Rose Light          251     173     180     FBADB4
+776	Pink Medium         252     176     185     FCB0B9
+899	Rose Medium         242     118     136     F27688
+335	Rose                238     84      110     EE546E
+326	Rose Very Dark      179     59      75      B33B4B
+151	Dusty Rose Vry Lt   240     206     212     F0CED4
+3354	Dusty Rose Light    228     166     172     E4A6AC
+3733	Dusty Rose          232     135     155     E8879B
 3731	Dusty Rose Very Dark	218	103	131	DA6783
 3350	Dusty Rose Ultra Dark	188	67	101	BC4365
 150	Dusty Rose Ult Vy Dk	171	2	73	AB0249
-3689	Mauve Light	251	191	194	FBBFC2
-3688	Mauve Medium	231	169	172	E7A9AC
-3687	Mauve	201	107	112	C96B70
-3803	Mauve Dark	171	51	87	AB3357
-3685	Mauve Very Dark	136	21	49	881531
+3689	Mauve Light         251     191     194     FBBFC2
+3688	Mauve Medium        231     169     172     E7A9AC
+3687	Mauve               201     107     112     C96B70
+3803	Mauve Dark          171     51      87      AB3357
+3685	Mauve Very Dark     136     21      49      881531
 605	Cranberry Very Light	255	192	205	FFC0CD
 604	Cranberry Light	255	176	190	FFB0BE
 603	Cranberry	255	164	190	FFA4BE
@@ -113,7 +113,7 @@ Floss#	Description         Red     Green   Blue    RGB
 157	Cornflower Blue Vy Lt	187	195	217	BBC3D9
 794	Cornflower Blue Light	143	156	193	8F9CC1
 793	Cornflower Blue Med	112	125	162	707DA2
-3807	Cornflower Blue	96	103	140	60678C	row 05-22
+3807	Cornflower Blue	96	103	140	60678C
 792	Cornflower Blue Dark	85	91	123	555B7B
 158	Cornflower Blu M V D	76	82	110	4C526E
 791	Cornflower Blue V D	70	69	99	464563
@@ -341,7 +341,7 @@ Floss#	Description         Red     Green   Blue    RGB
 3341	Apricot	252	171	152	FCAB98
 3340	Apricot Med	255	131	111	FF836F
 608	Burnt Orange Bright	253	93	53	FD5D35
-606	Orange?Red Bright	250	50	3	FA3203
+606	Orange Red Bright	250	50	3	FA3203
 951	Tawny Light	255	226	207	FFE2CF
 3856	Mahogany Ult Vy Lt	255	211	181	FFD3B5
 722	Orange Spice Light	247	151	111	F7976F
@@ -351,8 +351,8 @@ Floss#	Description         Red     Green   Blue    RGB
 922	Copper Light	226	115	35	E27323
 921	Copper	198	98	24	C66218
 920	Copper Med	172	84	20	AC5414
-919	Red?Copper	166	69	16	A64510
-918	Red?Copper Dark	130	52	10	82340A
+919	Red Copper	166	69	16	A64510
+918	Red Copper Dark	130	52	10	82340A
 3770	Tawny Vy Light	255	238	227	FFEEE3
 945	Tawny	251	213	187	FBD5BB
 402	Mahogany Vy Lt	247	167	119	F7A777
