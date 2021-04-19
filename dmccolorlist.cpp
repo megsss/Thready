@@ -4,3 +4,8 @@ dmcColorList::dmcColorList()
 {
 
 }
+
+void dmcColorList::initializeDMCList()
+{
+
+}
