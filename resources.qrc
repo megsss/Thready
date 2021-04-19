@@ -22,5 +22,6 @@
         <file>images/50/dropper-50.png</file>
         <file>images/50/pen-50.png</file>
         <file>images/32/dropper_32.png</file>
+        <file>dmcColors</file>
     </qresource>
 </RCC>
