@@ -3,7 +3,7 @@
 #include <QVector>
 #include <QDebug>
 
-DMCFloss::DMCFloss()
+DMCFloss::DMCFloss(QString flossNum, QString name, QColor rgbVal)
 {
 
 }

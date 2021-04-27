@@ -6,7 +6,6 @@
 
 ColorPalette::ColorPalette(QWidget *parent) : QWidget(parent)
 {
-    //colorDialog.open();
     populateColors();
     createColorPalette();
 }
