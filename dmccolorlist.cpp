@@ -12,12 +12,19 @@ void dmcColorList::initializeDMCList()
     }
 
     QTextStream in(&dmcFile);
-
+    QString stringstream;
     // read each line until '\n' (end of line)
     // order: DMC Color #, Color Name, RGB Color
-    // save to dmcColor object
-    // add color to list of dmcColor objects
+    // save to dmcFloss object
+    // add color to list of dmcFloss objects
 
-    qDebug() << in.readLine();
-    qDebug() << in.readAll();
+    do{
+        stringstream = in.readLine();
+        qDebug() << stringstream;
+    }while(!stringstream.isNull());
+
+    dmcFile.close();
+    qDebug() << "Done reading file";
+    //currently only reads to line 180 in dmcColorValues.csv
+
 }
