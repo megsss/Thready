@@ -14,7 +14,6 @@ SOURCES += \
     colorconverter.cpp \
     colorpalette.cpp \
     colorpalettelist.cpp \
-    colorspace.cpp \
     dmccolorlist.cpp \
     dmcfloss.cpp \
     doubleclickbutton.cpp \
@@ -30,7 +29,6 @@ HEADERS += \
     colorconverter.h \
     colorpalette.h \
     colorpalettelist.h \
-    colorspace.h \
     dmccolorlist.h \
     dmcfloss.h \
     doubleclickbutton.h \
