@@ -8,9 +8,10 @@ class dmcColorList
 public:
     dmcColorList();
     QVector<DMCFloss> dmcList;
+    static void initializeDMCList();
 
 private:
-    void initializeDMCList();
+
 };
 
 #endif // DMCCOLORLIST_H

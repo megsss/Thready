@@ -4,7 +4,7 @@
 #include <QObject>
 #include <QColor>
 
-class DMCFloss
+class DMCFloss: QObject
 {
     Q_OBJECT
 public:

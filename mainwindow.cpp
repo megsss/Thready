@@ -3,6 +3,7 @@
 #include "projectcanvas.h"
 #include "view.h"
 #include "colorpalette.h"
+#include "dmccolorlist.h"
 #include <QApplication>
 #include <QDebug>
 #include <QTimer>
@@ -23,6 +24,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->canvasLayout->setGeometry(QRect(0, 0, 750, 990));
     colorDialog.open();
     CreateNewProject();
+    dmcColorList::initializeDMCList();
     //colorPalette = new ColorPalette(this);
     //ui->colorWidgetLayout->addWidget(colorPalette);
 }

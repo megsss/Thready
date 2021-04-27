@@ -303,7 +303,7 @@ Floss#	Name                Red     Green   Blue    RGB
 3828	Hazelnut Brown	183	139	97	B78B61
 420	Hazelnut Brown Dk	160	112	66	A07042
 869	Hazelnut Brown V Dk	131	94	57	8.35E+41
-728	Topaz	228	180	104	E4B468
+728	Topaz           228	180	104	E4B468
 783	Topaz Medium	206	145	36	CE9124
 782	Topaz Dark	174	119	32	AE7720
 781	Topaz Very Dark	162	109	32	A26D20
