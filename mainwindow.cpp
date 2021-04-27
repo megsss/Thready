@@ -25,8 +25,7 @@ MainWindow::MainWindow(QWidget *parent)
     colorDialog.open();
     CreateNewProject();
     dmcColorList::initializeDMCList();
-    //colorPalette = new ColorPalette(this);
-    //ui->colorWidgetLayout->addWidget(colorPalette);
+
 }
 
 MainWindow::~MainWindow()
@@ -54,6 +53,7 @@ void MainWindow::on_actionExit_triggered()
 
 void MainWindow::quitApp()
 {
+    qDebug() << "Quitting app";
     QApplication::quit();
 }
 
@@ -104,7 +104,8 @@ void MainWindow::on_actionAdd_Image_triggered()
 
 void MainWindow::on_actionColor_Wheel_triggered()
 {
-    colorDialog.show();
+    colorDialog.open();
+    statusBar()->showMessage("Color Wheel");
 }
 
 void MainWindow::on_actionEyedropper_triggered()
@@ -116,7 +117,10 @@ void MainWindow::on_actionEyedropper_triggered()
     color.toRgb();
     QString colorName = color.name();
     statusBar()->showMessage("Color chosen: " + colorName);
-    //qDebug() << colorName;
+    qDebug() << colorName;
+
+    //TODO: color converter method that returns closest dmc color
+
     QCursor cursor(QPixmap(":/images/32/eyedropper_32.png"),32,32);
     //view->setCursor(cursor);
     setCursor(cursor);
@@ -146,9 +150,6 @@ void MainWindow::on_actionFill_Color_triggered()
 
     if(color.isValid()){
         canvas->setFillColor(color);
-        //ui->brushColorButton->setButtonColor(color);
-        //QString colorQss = QString("background-color: %1").arg(color.name());
-        //ui->brushColorButton->setStyleSheet(colorQss);
     }
 
 }
@@ -175,9 +176,6 @@ void MainWindow::on_actionPen_triggered()
 
     if(color.isValid()){
         canvas->setFillColor(color);
-        //ui->brushColorButton->setButtonColor(color);
-        //QString colorQss = QString("background-color: %1").arg(color.name());
-        //ui->brushColorButton->setStyleSheet(colorQss);
     }
 }
 
