@@ -1,8 +1,9 @@
 #include "dmccolorlist.h"
+#include "dmcfloss.h"
 #include <QFile>
 #include <QDebug>
 
-//read DMC colors from dmcColors.txt and add to array
+//read DMC colors from dmcColors.txt and add to QVector<DMCFloss> dmcList
 void dmcColorList::initializeDMCList()
 {
     QFile dmcFile(":/dmcColorValues.csv");
@@ -17,14 +18,31 @@ void dmcColorList::initializeDMCList()
     // order: DMC Color #, Color Name, RGB Color
     // save to dmcFloss object
     // add color to list of dmcFloss objects
-
+    QString name, dmcNum, rgb;
     do{
         stringstream = in.readLine();
-        qDebug() << stringstream;
+        //qDebug() << stringstream;
+        QStringList ssList = stringstream.split(QLatin1Char(','));
+        qDebug() << ssList;
+        dmcNum = ssList[0];
+        qDebug() << dmcNum;
+        name = ssList[1];
+        qDebug() << name;
+        rgb = ssList[2];
+        qDebug() << rgb;
+
+        //DMCFloss::DMCFloss(stringstream);
+
     }while(!stringstream.isNull());
 
     dmcFile.close();
     qDebug() << "Done reading file";
-    //currently only reads to line 180 in dmcColorValues.csv
+    /*
+    for (int i = 0; i < dmcBefore.count(); ++i) {
+        qDebug() << dmcBefore[i];
+    }
+    */
+    //dDebug() << dmcBefore.count();
+
 
 }

@@ -6,10 +6,12 @@
 class dmcColorList
 {
 public:
-    QVector<DMCFloss> dmcList;
+    static QVector<DMCFloss> dmcList;
+    //static QVector<QString> dmcBefore;
     static void initializeDMCList();
 
 private:
+    static QVector<QString> dmcBefore;
 
 };
 
