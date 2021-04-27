@@ -6,7 +6,6 @@
 class dmcColorList
 {
 public:
-    dmcColorList();
     QVector<DMCFloss> dmcList;
     static void initializeDMCList();
 

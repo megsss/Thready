@@ -8,7 +8,7 @@ class DMCFloss: QObject
 {
     Q_OBJECT
 public:
-    DMCFloss(QString flossNum, QString name, QColor rgbVal);
+    DMCFloss(QString const flossNum, QString const name, QColor const rgbVal);
     QColor color() const { return color_; }
     QRgb qrgb() const { return color_.rgb(); }
     QString flossNum() const { return flossNum_; }

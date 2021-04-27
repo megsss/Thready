@@ -2,12 +2,6 @@
 #include <QFile>
 #include <QDebug>
 
-dmcColorList::dmcColorList()
-{
-
-}
-
-
 //read DMC colors from dmcColors.txt and add to array
 void dmcColorList::initializeDMCList()
 {
