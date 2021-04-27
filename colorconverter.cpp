@@ -42,6 +42,5 @@ void ColorConverter::compareColors(QColor dmcColor, QColor color)
     //distance = sqrt((redToCompare - dmcColorRed)^2 + (greenToCompare - dmcColorGreen)^2 + (blueToCompare - dmcColorBlue)^2);
 
 
-
 }
 

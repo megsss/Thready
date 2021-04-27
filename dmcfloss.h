@@ -4,18 +4,18 @@
 #include <QObject>
 #include <QColor>
 
-class DMCFloss
+class DMCFloss: QObject
 {
     Q_OBJECT
 public:
-    DMCFloss();
+    DMCFloss(QString flossNum, QString name, QColor rgbVal);
     QColor color() const { return color_; }
     QRgb qrgb() const { return color_.rgb(); }
-    int code() const { return code_; }
+    QString flossNum() const { return flossNum_; }
     QString name() const { return name_; }
 
 private:
-    int code_;
+    QString flossNum_;
     QString name_;
     QColor color_;
 };
