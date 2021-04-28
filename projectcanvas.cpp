@@ -270,17 +270,18 @@ void ProjectCanvas::setPenColor(const QColor &value)
 
 void ProjectCanvas::addGraphItem(const int &aidaSize)
 {
-    //QList<QGraphicsItem> lines = new QList<QGraphicsItem>();
-    //QGraphicsItemGroup grid = createItemGroup(QList<QGraphicsItem> lines);
-    QRect rect = QRect(50,50, 400, 400);
+    //QLineF line;
+    //QList<QGraphicsItemGroup *> grid;
+    QRect rect = QRect(50,50, 350, 350);
+    addRect(rect);
+
+    // how far apart the lines will be
     qreal left = int(rect.left()) - (int(rect.left()) % aidaSize);
     qreal top = int(rect.top()) - (int(rect.top()) % aidaSize);
 
-    for (qreal x = left; x < rect.right(); x += aidaSize)
+    //create the lines
+    for (qreal x = left + aidaSize; x < rect.right(); x += aidaSize)
     addLine(QLineF(x, rect.top(), x, rect.bottom()));
-    for (qreal y = top; y < rect.bottom(); y += aidaSize)
+    for (qreal y = top + aidaSize; y < rect.bottom(); y += aidaSize)
     addLine(QLineF(rect.left(), y, rect.right(), y));
-
-    //rectangle->setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemIsFocusable);
-    //addItem(rectangle);
 }
