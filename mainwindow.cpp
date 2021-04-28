@@ -179,6 +179,12 @@ void MainWindow::on_actionPen_triggered()
     }
 }
 
+void MainWindow::on_actionAdd_Aida_Template_triggered()
+{
+    canvas->addGraphItem(16);
+    //canvas->addRect(QRect(50, 50, 400, 400));
+}
+
 void MainWindow::setActiveTool(ProjectCanvas::ToolType tool)
 {
     if(tool == ProjectCanvas::Cursor)

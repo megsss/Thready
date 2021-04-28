@@ -7,6 +7,7 @@
 #include <QGraphicsSceneMouseEvent>
 #include <QKeyEvent>
 #include <QDebug>
+#include <QPainter>
 
 ProjectCanvas::ProjectCanvas(QObject *parent) : QGraphicsScene(parent),
     tool(Cursor),
@@ -265,4 +266,21 @@ QColor ProjectCanvas::getPenColor() const
 void ProjectCanvas::setPenColor(const QColor &value)
 {
     penColor = value;
+}
+
+void ProjectCanvas::addGraphItem(const int &aidaSize)
+{
+    //QList<QGraphicsItem> lines = new QList<QGraphicsItem>();
+    //QGraphicsItemGroup grid = createItemGroup(QList<QGraphicsItem> lines);
+    QRect rect = QRect(50,50, 400, 400);
+    qreal left = int(rect.left()) - (int(rect.left()) % aidaSize);
+    qreal top = int(rect.top()) - (int(rect.top()) % aidaSize);
+
+    for (qreal x = left; x < rect.right(); x += aidaSize)
+    addLine(QLineF(x, rect.top(), x, rect.bottom()));
+    for (qreal y = top; y < rect.bottom(); y += aidaSize)
+    addLine(QLineF(rect.left(), y, rect.right(), y));
+
+    //rectangle->setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemIsFocusable);
+    //addItem(rectangle);
 }

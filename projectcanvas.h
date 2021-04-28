@@ -25,6 +25,8 @@ public:
     QColor getPenColor() const;
     void setPenColor(const QColor &value);
 
+    void addGraphItem(const int &aidaSize);
+
     int getPenWidth() const;
     void setPenWidth(int value);
 
@@ -64,7 +66,6 @@ private:
 
     QGraphicsLineItem * horGuideLine;
     QGraphicsLineItem * verGuideLine;
-
     QColor penColor;
     int penWidth;
     Qt::PenStyle penStyle;
