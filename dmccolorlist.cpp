@@ -20,6 +20,7 @@ void dmcColorList::initializeDMCList()
     // save to dmcFloss object
     // add color to list of dmcFloss objects
     QString name, dmcNum, rgbString;
+    QString redValue, blueValue, greenValue;
     //QColor rgb;
 
     do{
@@ -31,10 +32,16 @@ void dmcColorList::initializeDMCList()
         dmcNum = ssList.value(0);
         qDebug() << dmcNum;
         name = ssList.value(1);
-        name.remove(QChar(' '));
+        //name.remove(QChar(' '));
         qDebug() << name;
-        rgbString = ssList.value(2);
-        rgbString.remove(QChar(' '));
+        redValue = ssList.value(2);
+        qDebug() << redValue;
+        blueValue = ssList.value(3);
+        qDebug() << blueValue;
+        greenValue = ssList.value(4);
+        qDebug() << greenValue;
+        rgbString = ssList.value(5);
+        //rgbString.remove(QChar(' '));
         //rgb.name(rgbString);
         //rgb = rgbString;
         //rgb = QColor::name(rgbString);

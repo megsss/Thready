@@ -7,12 +7,12 @@ ColorConverter::ColorConverter()
 
 }
 
-QColor ColorConverter::RGBtoDMC(QColor color)
+QColor ColorConverter::RGBtoDMC(QColor &color)
 {
     QColor pickedColor = color;
-    int redValue = color.red();
-    int blueValue = color.blue();
-    int greenValue = color.green();
+    //int redValue = color.red();
+    //int blueValue = color.blue();
+    //int greenValue = color.green();
     //qDebug << "red color value is" + redValue ;
 
     //TODO
@@ -23,13 +23,13 @@ QColor ColorConverter::DMCtoRGB(QColor color)
     return color.toRgb();
 }
 
-void ColorConverter::findClosestColor(QColor color)
+void ColorConverter::findClosestColor(QColor &color)
 {
 
     //compareColors();
 }
 
-void ColorConverter::compareColors(QColor dmcColor, QColor color)
+void ColorConverter::compareColors(QColor &dmcColor, QColor &color)
 {
     int distance;
     int redToCompare = color.red();

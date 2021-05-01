@@ -145,12 +145,14 @@ void MainWindow::on_actionFill_Color_triggered()
     setCursor(cursor);
     statusBar()->showMessage("Current tool is Fill");
     canvas->setTool(ProjectCanvas::Fill);
+    canvas->setBrushStyle(Qt::BrushStyle::SolidPattern);
     setActiveTool(ProjectCanvas::Fill);
     QColor color = colorDialog.getColor(Qt::black,this);
 
     if(color.isValid()){
         canvas->setFillColor(color);
     }
+    //QPointer position = pos();
 
 }
 

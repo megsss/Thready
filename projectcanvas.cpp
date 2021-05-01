@@ -73,6 +73,11 @@ void ProjectCanvas::mousePressEvent(QGraphicsSceneMouseEvent *event)
         if(tool == ToolType::Pen || tool == Eraser){
             startingPoint = event->scenePos();
             drawing = true;
+        }
+        if(tool == ToolType::Fill){
+            QPointF position = event->scenePos();
+            fillSquare(position);
+            drawing = true;
         }else{
             QGraphicsScene::mousePressEvent(event);
         }
@@ -110,6 +115,10 @@ void ProjectCanvas::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
             removeItem(lastEraserCircle);
             delete lastEraserCircle;
             lastEraserCircle = nullptr;
+            drawing = false;
+        }
+
+        if(tool == ToolType::Fill){
             drawing = false;
         }
 
@@ -198,6 +207,17 @@ void ProjectCanvas::eraseStrokesUnder(QGraphicsEllipseItem *item)
     }
 }
 
+void ProjectCanvas::fillSquare(const QPointF &position)
+{
+    qDebug() << position;
+    QPainterPath path;
+    path.setFillRule(Qt::FillRule::OddEvenFill);
+    path.currentPosition();
+    //path.
+    QBrush brush;
+
+}
+
 ProjectCanvas::ToolType ProjectCanvas::getTool() const
 {
     return tool;
@@ -270,10 +290,9 @@ void ProjectCanvas::setPenColor(const QColor &value)
 
 void ProjectCanvas::addGraphItem(const int &aidaSize)
 {
-    //QLineF line;
-    //QList<QGraphicsItemGroup *> grid;
     QRect rect = QRect(50,50, 350, 350);
-    addRect(rect);
+    //rect.in
+    //addRect(rect);
 
     // how far apart the lines will be
     qreal left = int(rect.left()) - (int(rect.left()) % aidaSize);
@@ -281,7 +300,11 @@ void ProjectCanvas::addGraphItem(const int &aidaSize)
 
     //create the lines
     for (qreal x = left + aidaSize; x < rect.right(); x += aidaSize)
+    //for (qreal x = left; x < rect.right(); x += aidaSize)
+    //addRect(QRect(x, rect.top(), left, left));
     addLine(QLineF(x, rect.top(), x, rect.bottom()));
     for (qreal y = top + aidaSize; y < rect.bottom(); y += aidaSize)
+    //for (qreal y = top; y < rect.bottom(); y += aidaSize)
+    //addRect(QRect(rect.left(), y, top, top));
     addLine(QLineF(rect.left(), y, rect.right(), y));
 }
