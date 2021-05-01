@@ -288,11 +288,11 @@ void ProjectCanvas::setPenColor(const QColor &value)
     penColor = value;
 }
 
-void ProjectCanvas::addGraphItem(const int &aidaSize)
+void ProjectCanvas::addAidaGraphItem(const int &aidaSize)
 {
     QRect rect = QRect(50,50, 350, 350);
     //rect.in
-    //addRect(rect);
+    addRect(rect);
 
     // how far apart the lines will be
     qreal left = int(rect.left()) - (int(rect.left()) % aidaSize);

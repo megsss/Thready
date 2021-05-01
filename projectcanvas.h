@@ -14,7 +14,8 @@ public:
            Eraser,
            Pen,
            Fill,
-           Eyedropper
+           Eyedropper,
+           AidaGraph
        };
 
     ToolType getTool() const;
@@ -25,7 +26,7 @@ public:
     QColor getPenColor() const;
     void setPenColor(const QColor &value);
 
-    void addGraphItem(const int &aidaSize);
+    void addAidaGraphItem(const int &aidaSize);
 
     int getPenWidth() const;
     void setPenWidth(int value);

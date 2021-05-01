@@ -183,7 +183,10 @@ void MainWindow::on_actionPen_triggered()
 
 void MainWindow::on_actionAdd_Aida_Template_triggered()
 {
-    canvas->addGraphItem(16);
+    canvas->setTool(ProjectCanvas::AidaGraph);
+    statusBar()->showMessage("Current tool is Aida Graph");
+    //TODO: create popup Dialog
+    canvas->addAidaGraphItem(16);
     //canvas->addRect(QRect(50, 50, 400, 400));
 }
 
