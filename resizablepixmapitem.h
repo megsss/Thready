@@ -16,6 +16,7 @@ public:
     void setSelectorFrameBounds(QRectF boundsRect) override;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) override;
     void setPixmap(const QPixmap &value);
+    //void addAidaGraph()
 
 private:
     QPixmap mPixmap;

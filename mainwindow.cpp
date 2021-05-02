@@ -54,6 +54,7 @@ void MainWindow::on_actionExit_triggered()
 void MainWindow::quitApp()
 {
     qDebug() << "Quitting app";
+    colorDialog.close();
     QApplication::quit();
 }
 
@@ -183,6 +184,7 @@ void MainWindow::on_actionPen_triggered()
 
 void MainWindow::on_actionAdd_Aida_Template_triggered()
 {
+
     canvas->setTool(ProjectCanvas::AidaGraph);
     statusBar()->showMessage("Current tool is Aida Graph");
     //TODO: create popup Dialog

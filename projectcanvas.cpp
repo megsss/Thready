@@ -5,6 +5,7 @@
 #include <QMimeData>
 #include <QGraphicsSceneDragDropEvent>
 #include <QGraphicsSceneMouseEvent>
+#include "resizableaidagraphitem.h"
 #include <QKeyEvent>
 #include <QDebug>
 #include <QPainter>
@@ -121,6 +122,18 @@ void ProjectCanvas::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
         if(tool == ToolType::Fill){
             drawing = false;
         }
+        /*
+        if(tool == ToolType::AidaGraph){
+            //drawing = true;
+            Resize * mRect = new Resize
+            mRect->setRect(QRectF(startingPoint,event->scenePos()).normalized());
+            mRect->setBrush(Qt::transparent);
+            mRect->setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
+            addItem(mRect);
+            lastItem = nullptr;
+            drawing = false;
+        }
+        */
 
     }else{
         QGraphicsScene::mouseReleaseEvent(event);
@@ -210,11 +223,11 @@ void ProjectCanvas::eraseStrokesUnder(QGraphicsEllipseItem *item)
 void ProjectCanvas::fillSquare(const QPointF &position)
 {
     qDebug() << position;
+    QPainter p;
     QPainterPath path;
     path.setFillRule(Qt::FillRule::OddEvenFill);
     path.currentPosition();
-    //path.
-    QBrush brush;
+    p.fillPath(path, Qt::BrushStyle::SolidPattern);
 
 }
 

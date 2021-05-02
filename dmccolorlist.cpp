@@ -15,49 +15,58 @@ void dmcColorList::initializeDMCList()
 
     QTextStream in(&dmcFile);
     QString stringstream;
-    // read each line until '\n' (end of line)
-    // order: DMC Color #, Color Name, RGB Color
-    // save to dmcFloss object
-    // add color to list of dmcFloss objects
     QString name, dmcNum, rgbString;
-    QString redValue, blueValue, greenValue;
-    //QColor rgb;
+    QString redString, blueString, greenString;
+    int red, blue, green;
+    QColor rgb;
+    //DMCFloss floss;
 
     do{
         stringstream = in.readLine();
-        //qDebug() << stringstream;
-        //stringstream.split(QRegExp("\\W+"), Qt::SkipEmptyParts);
         QStringList ssList = stringstream.split(QLatin1Char(','));
         qDebug() << ssList;
+
         dmcNum = ssList.value(0);
         qDebug() << dmcNum;
+
         name = ssList.value(1);
-        //name.remove(QChar(' '));
         qDebug() << name;
-        redValue = ssList.value(2);
-        qDebug() << redValue;
-        blueValue = ssList.value(3);
-        qDebug() << blueValue;
-        greenValue = ssList.value(4);
-        qDebug() << greenValue;
+
+        redString = ssList.value(2);
+        qDebug() << redString;
+        red = redString.toInt();
+
+        blueString = ssList.value(3);
+        qDebug() << blueString;
+        blue = blueString.toInt();
+
+        greenString = ssList.value(4);
+        qDebug() << greenString;
+        green = greenString.toInt();
+
+        rgb = QColor(red, blue, green);
+        qDebug() << rgb;
+
         rgbString = ssList.value(5);
-        //rgbString.remove(QChar(' '));
-        //rgb.name(rgbString);
-        //rgb = rgbString;
-        //rgb = QColor::name(rgbString);
         qDebug() << rgbString;
-        //dmcList.push_back(DMCFloss(dmcNum, name, rgb));
+        //rgb = (QColor)rgbString;
+
+        //DMCFloss floss = DMCFloss(dmcNum, floss, rgb);
+
+        //add floss item to dmcList
+        //dmcList.push_back(DMCFloss(dmcNum, name,rgb));
 
     }while(!stringstream.isNull());
 
     dmcFile.close();
     qDebug() << "Done reading file";
 
-/*
+    /*
     for (int i = 0; i < dmcList.count(); ++i) {
-        qDebug() << dmcList;
+        qDebug() << dmcList[i].rgbVal();
     }
-*/
+   */
+
     //dDebug() << dmcBefore.count();
 
 
