@@ -3,16 +3,17 @@
 
 #include "dmcfloss.h"
 
-class dmcColorList
+#include <QListWidget>
+
+class dmcColorList : public QListWidget
 {
+    Q_OBJECT
 public:
-    static QVector<DMCFloss> dmcList;
-    //static QVector<QString> dmcBefore;
-    static void initializeDMCList();
+    explicit dmcColorList(QWidget *parent = nullptr);
 
 private:
-    static QVector<QString> dmcBefore;
-    QList<QColor> colors;
+    void initializeDMCList();
+    void addDMCColorToList(QStringList &color);
 
 
 };
