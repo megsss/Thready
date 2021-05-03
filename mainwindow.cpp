@@ -191,7 +191,7 @@ void MainWindow::on_actionPen_triggered()
         canvas->setPenColor(dmcColor);
 
         QStringList colorStringList= ColorConverter::findDMCbyRBGColor(dmcColor.name());
-        statusBar()->showMessage(colorStringList.value());
+        statusBar()->showMessage(colorStringList.value(2));
         colorPaletteList->addColorToList(colorStringList);
     }
 }

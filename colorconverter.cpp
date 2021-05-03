@@ -112,18 +112,20 @@ QStringList ColorConverter::findDMCbyRBGColor(QString color)
         if(!ssList.empty())
         {
             DMC.append(ssList);
-            qDebug() << ssList;
+            //qDebug() << ssList;
         }
     }while(!stringstream.isNull());
     dmcFile.close();
     qDebug() << "Done reading file";
 
-    qDebug()<< DMC.count();
+    //qDebug()<< DMC.count();
     for(int i=0; i<DMC.count(); i++)
     {
         QStringList dmcColor = DMC[i];
         rgbString = dmcColor.value(5);
-        if(color.contains(rgbString)){
+        //qDebug() << rgbString;
+        if(color.endsWith(rgbString, Qt::CaseInsensitive)){
+            qDebug() << dmcColor;
             return dmcColor;
         }
     }
