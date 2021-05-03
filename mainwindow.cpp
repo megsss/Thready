@@ -2,7 +2,6 @@
 #include "ui_mainwindow.h"
 #include "projectcanvas.h"
 #include "view.h"
-#include "dmccolorlist.h"
 #include <QApplication>
 #include <QDebug>
 #include <QTimer>
@@ -12,7 +11,6 @@
 #include <QDir>
 #include <QMessageBox>
 #include <QColorDialog>
-#include "dmccombobox.h"
 #include "colorconverter.h"
 
 
@@ -26,6 +24,8 @@ MainWindow::MainWindow(QWidget *parent)
     colorDialog.open();
     CreateNewProject();
     colorPaletteList = new ColorPaletteList(this);
+    dmcColorPaletteList = new DMCColorPalette(this);
+
 
 }
 

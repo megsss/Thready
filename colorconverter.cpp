@@ -175,6 +175,8 @@ QList<QStringList> ColorConverter::readDMCColors()
     }while(!stringstream.isNull());
     dmcFile.close();
     qDebug() << "Done reading file";
+    DMC.removeFirst();
+    DMC.removeLast();
     return DMC;
 }
 

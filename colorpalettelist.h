@@ -18,6 +18,6 @@ public slots:
     // QAbstractItemView interface
 protected:
     void startDrag(Qt::DropActions supportedActions) override;
-    void keyPressEvent(QKeyEvent *event) override;
+    //void keyPressEvent(QKeyEvent *event) override;
 };
 #endif // COLORPALETTELIST_H

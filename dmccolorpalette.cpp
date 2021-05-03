@@ -1,12 +1,10 @@
-#include "dmccolorlist.h"
-#include "dmcfloss.h"
+#include "dmccolorpalette.h"
 #include "colorconverter.h"
-#include <QFile>
+#include <QDrag>
+#include <QMimeData>
 #include <QDebug>
-#include <QColor>
 
-//read DMC colors from dmcColors.txt and add to QVector<DMCFloss> dmcList
-dmcColorList::dmcColorList(QWidget *parent) : QListWidget(parent)
+DMCColorPalette::DMCColorPalette(QWidget *parent) : QListWidget(parent)
 {
     setGeometry(1150, 450, 200, 200);
     setMinimumWidth(200);
@@ -17,7 +15,7 @@ dmcColorList::dmcColorList(QWidget *parent) : QListWidget(parent)
     initializeDMCList();
 }
 
-void dmcColorList::initializeDMCList()
+void DMCColorPalette::initializeDMCList()
 {
     QList<QStringList> DMC = ColorConverter::readDMCColors();
 
@@ -25,25 +23,11 @@ void dmcColorList::initializeDMCList()
     {
         QStringList dmcColor = DMC[i];
         addDMCColorToList(dmcColor);
-        /*
-        QListWidgetItem * newListItem = new QListWidgetItem();
-        QString dmcNum = DMC[i].value(0);
-        QString colorName = DMC[i].value(1);
-        QColor color = QColor(DMC[i].value(2).toInt(), DMC[i].value(3).toInt(), DMC[i].value(4).toInt());
-        QFont f;
-        f.setPointSize(1);
-        newListItem->setText(colorName);
-        QPixmap pix(20, 20);
-        pix.fill(color);
-        newListItem->setIcon(QIcon(pix));
-        addItem(newListItem);
-        */
         }
 }
 
-void dmcColorList::addDMCColorToList(QStringList &color)
+void DMCColorPalette::addDMCColorToList(QStringList &color)
 {
-
     QString dmcNum = color.value(0);
     QString colorName = color.value(1);
     QColor dmcColor = QColor(color.value(2).toInt(), color.value(3).toInt(), color.value(4).toInt());
@@ -55,5 +39,5 @@ void dmcColorList::addDMCColorToList(QStringList &color)
     pix.fill(dmcColor);
     newItem->setIcon(QIcon(pix));
     addItem(newItem);
-
 }
+
