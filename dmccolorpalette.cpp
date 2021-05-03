@@ -17,17 +17,19 @@ DMCColorPalette::DMCColorPalette(QWidget *parent) : QListWidget(parent)
 
 void DMCColorPalette::initializeDMCList()
 {
+    qDebug() << "DMCColorPalette::initializeDMCList()";
     QList<QStringList> DMC = ColorConverter::readDMCColors();
 
     for(int i=0; i<DMC.count(); i++)
     {
         QStringList dmcColor = DMC[i];
         addDMCColorToList(dmcColor);
-        }
+    }
 }
 
 void DMCColorPalette::addDMCColorToList(QStringList &color)
 {
+    qDebug() << "DMCColorPalette::addDMCColorToList";
     QString dmcNum = color.value(0);
     QString colorName = color.value(1);
     QColor dmcColor = QColor(color.value(2).toInt(), color.value(3).toInt(), color.value(4).toInt());
