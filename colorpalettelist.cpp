@@ -16,7 +16,7 @@ ColorPaletteList::ColorPaletteList(QWidget *parent) : QListWidget(parent)
 
 void ColorPaletteList::addColorToList(QStringList &color)
 {
-
+    qDebug() << "ColorPaletteList::addColorToList";
     QString dmcNum = color.value(0);
     QString colorName = color.value(1);
     QColor dmcColor = QColor(color.value(2).toInt(), color.value(3).toInt(), color.value(4).toInt());

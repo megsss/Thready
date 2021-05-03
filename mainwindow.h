@@ -7,6 +7,7 @@
 #include <QColorDialog>
 #include "projectcanvas.h"
 #include "colorpalettelist.h"
+#include "dmccolorpalette.h"
 #include "view.h"
 
 QT_BEGIN_NAMESPACE
@@ -21,6 +22,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     ColorPaletteList * colorPaletteList;
+    DMCColorPalette * dmcColorPaletteList;
 
     void CreateNewProject();
 

@@ -2,7 +2,6 @@
 #include "ui_mainwindow.h"
 #include "projectcanvas.h"
 #include "view.h"
-#include "dmccolorlist.h"
 #include <QApplication>
 #include <QDebug>
 #include <QTimer>
@@ -12,7 +11,6 @@
 #include <QDir>
 #include <QMessageBox>
 #include <QColorDialog>
-#include "dmccombobox.h"
 #include "colorconverter.h"
 
 
@@ -26,6 +24,8 @@ MainWindow::MainWindow(QWidget *parent)
     colorDialog.open();
     CreateNewProject();
     colorPaletteList = new ColorPaletteList(this);
+    dmcColorPaletteList = new DMCColorPalette(this);
+
 
 }
 
@@ -123,19 +123,15 @@ void MainWindow::on_actionEyedropper_triggered()
     QColor color = colorDialog.getColor(Qt::white, this);
     color.toRgb();
     QString colorName = color.name();
-    //statusBar()->showMessage("Color chosen: " + colorName);
     QColor dmcColor = ColorConverter::findClosestColor(color);
     QStringList colorStringList= ColorConverter::findDMCbyRBGColor(dmcColor.name());
     qDebug() << colorStringList;
     colorPaletteList->addColorToList(colorStringList);
-
-    statusBar()->showMessage(colorStringList.value(2));
 }
 
 void MainWindow::on_actionCursor_triggered()
 {
     QCursor cursor(Qt::ArrowCursor);
-    //view->setCursor(cursor);
     setCursor(cursor);
     statusBar()->showMessage("Current tool is Cursor");
     canvas->setTool(ProjectCanvas::Cursor);
@@ -145,7 +141,6 @@ void MainWindow::on_actionCursor_triggered()
 void MainWindow::on_actionFill_Color_triggered()
 {
     QCursor cursor(QPixmap(":/images/32/fill_32.png"),32,32);
-    //view->setCursor(cursor);
     setCursor(cursor);
     statusBar()->showMessage("Current tool is Fill");
     canvas->setTool(ProjectCanvas::Fill);
@@ -168,7 +163,6 @@ void MainWindow::on_actionFill_Color_triggered()
 void MainWindow::on_actionEraser_triggered()
 {
     QCursor cursor(Qt::ArrowCursor);
-    //view->setCursor(cursor);
     setCursor(cursor);
     statusBar()->showMessage("Current tool is Eraser");
     canvas->setTool(ProjectCanvas::Eraser);
@@ -178,7 +172,6 @@ void MainWindow::on_actionEraser_triggered()
 void MainWindow::on_actionPen_triggered()
 {
     QCursor cursor(QPixmap(":/images/32/pen_32.png"),32,32);
-    //view->setCursor(cursor);
     setCursor(cursor);
     statusBar()->showMessage("Current tool is Pen");
     canvas->setTool(ProjectCanvas::Pen);
@@ -189,9 +182,7 @@ void MainWindow::on_actionPen_triggered()
 
     if(dmcColor.isValid()){
         canvas->setPenColor(dmcColor);
-
         QStringList colorStringList= ColorConverter::findDMCbyRBGColor(dmcColor.name());
-        statusBar()->showMessage(colorStringList.value(2));
         colorPaletteList->addColorToList(colorStringList);
     }
 }
@@ -251,7 +242,3 @@ void MainWindow::setActiveTool(ProjectCanvas::ToolType tool)
         ui->actionPen->setIcon(QIcon(":/images/50/pen-50.png"));
     }
 }
-
-
-
-

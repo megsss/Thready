@@ -8,6 +8,7 @@
 
 QColor ColorConverter::findClosestColor(QColor &color)
 {
+    qDebug() << "ColorConverter::findClosestColor";
     QColor closestRGB;
     QStringList closestDmcStringList;
     int smallestDistance = 1000;
@@ -85,6 +86,7 @@ QColor ColorConverter::findClosestColor(QColor &color)
 
 int ColorConverter::compareColors(QColor &color, QColor &dmcColor)
 {
+    qDebug() << "ColorConverter::compareColors";
     int distance;
     distance = qAbs(color.red() - dmcColor.red()) + qAbs(color.green() - dmcColor.green()) + qAbs(color.blue() - dmcColor.blue());
     return distance;
@@ -92,6 +94,7 @@ int ColorConverter::compareColors(QColor &color, QColor &dmcColor)
 
 QStringList ColorConverter::findDMCbyRBGColor(QString color)
 {
+    qDebug() << "ColorConverter::findDMCbyRGBColor";
     QFile dmcFile(":/dmcColorValues.csv");
     if(!dmcFile.open(QIODevice::ReadOnly | QIODevice::Text)){
         qDebug() << "File open failed";
@@ -116,7 +119,6 @@ QStringList ColorConverter::findDMCbyRBGColor(QString color)
     }while(!stringstream.isNull());
     dmcFile.close();
     qDebug() << "Done reading file";
-    QStringList found;
     //qDebug()<< DMC.count();
     for(int i=0; i<DMC.count(); i++)
     {
@@ -125,14 +127,14 @@ QStringList ColorConverter::findDMCbyRBGColor(QString color)
         //qDebug() << rgbString;
         if(color.endsWith(rgbString, Qt::CaseInsensitive)){
             qDebug() << dmcColor;
-            found = dmcColor;
+            return dmcColor;
         }
     }
-    return found;
 }
 
 QStringList ColorConverter::findDMCbyName(QString colorName)
 {
+    qDebug() << "ColorConverter::findDMCbyName";
     QString name, dmcNum, rgbString;
     QList<QStringList> DMC = readDMCColors();
     QStringList found;
@@ -142,15 +144,15 @@ QStringList ColorConverter::findDMCbyName(QString colorName)
         name = dmcColor.value(1);
         //qDebug() << rgbString;
         if(colorName == name){
-            qDebug() << dmcColor;
-            found = dmcColor;
+            qDebug() <<  dmcColor;
+            return dmcColor;
         }
     }
-    return found;
 }
 
 QList<QStringList> ColorConverter::readDMCColors()
 {
+    qDebug() << "ColorConverter::readDMCColors()";
     QFile dmcFile(":/dmcColorValues.csv");
     if(!dmcFile.open(QIODevice::ReadOnly | QIODevice::Text)){
         qDebug() << "File open failed";
@@ -159,7 +161,6 @@ QList<QStringList> ColorConverter::readDMCColors()
 
     QTextStream in(&dmcFile);
     QString stringstream;
-
     QString name, dmcNum, rgbString;
 
     QList<QStringList> DMC;
@@ -170,11 +171,12 @@ QList<QStringList> ColorConverter::readDMCColors()
         if(!ssList.empty())
         {
             DMC.append(ssList);
-            //qDebug() << ssList;
         }
     }while(!stringstream.isNull());
     dmcFile.close();
     qDebug() << "Done reading file";
+    DMC.removeFirst();
+    DMC.removeLast();
     return DMC;
 }
 

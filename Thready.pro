@@ -13,8 +13,7 @@ CONFIG += c++11
 SOURCES += \
     colorconverter.cpp \
     colorpalettelist.cpp \
-    dmccolorlist.cpp \
-    dmccombobox.cpp \
+    dmccolorpalette.cpp \
     dmcfloss.cpp \
     doubleclickbutton.cpp \
     handleitem.cpp \
@@ -29,8 +28,7 @@ SOURCES += \
 HEADERS += \
     colorconverter.h \
     colorpalettelist.h \
-    dmccolorlist.h \
-    dmccombobox.h \
+    dmccolorpalette.h \
     dmcfloss.h \
     doubleclickbutton.h \
     handleitem.h \
