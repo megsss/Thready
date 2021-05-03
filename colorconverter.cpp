@@ -14,34 +14,11 @@ QColor ColorConverter::findClosestColor(QColor &color)
     int smallestDistance = 1000;
     int distance;
 
-    //compare to colors in file
-    QFile dmcFile(":/dmcColorValues.csv");
-    if(!dmcFile.open(QIODevice::ReadOnly | QIODevice::Text)){
-        qDebug() << "File open failed";
-
-    }
-
-    QTextStream in(&dmcFile);
-    QString stringstream;
-
     QString name, dmcNum, rgbString;
     int red, blue, green;
     QColor rgb;
 
-    QList<QStringList> DMC;
-
-    do{
-        stringstream = in.readLine();
-        QStringList ssList = stringstream.split(QLatin1Char(','));
-        if(!ssList.empty())
-        {
-            DMC.append(ssList);
-            qDebug() << ssList;
-        }
-    }while(!stringstream.isNull());
-
-    dmcFile.close();
-    qDebug() << "Done reading file";
+    QList<QStringList> DMC = readDMCColors();
 
     for(int i=0; i<DMC.count(); i++)
     {
@@ -95,31 +72,11 @@ int ColorConverter::compareColors(QColor &color, QColor &dmcColor)
 QStringList ColorConverter::findDMCbyRBGColor(QString color)
 {
     qDebug() << "ColorConverter::findDMCbyRGBColor";
-    QFile dmcFile(":/dmcColorValues.csv");
-    if(!dmcFile.open(QIODevice::ReadOnly | QIODevice::Text)){
-        qDebug() << "File open failed";
-
-    }
-
-    QTextStream in(&dmcFile);
-    QString stringstream;
 
     QString name, dmcNum, rgbString;
 
-    QList<QStringList> DMC;
+    QList<QStringList> DMC = readDMCColors();
 
-    do{
-        stringstream = in.readLine();
-        QStringList ssList = stringstream.split(QLatin1Char(','));
-        if(!ssList.empty())
-        {
-            DMC.append(ssList);
-            //qDebug() << ssList;
-        }
-    }while(!stringstream.isNull());
-    dmcFile.close();
-    qDebug() << "Done reading file";
-    //qDebug()<< DMC.count();
     for(int i=0; i<DMC.count(); i++)
     {
         QStringList dmcColor = DMC[i];
@@ -137,7 +94,6 @@ QStringList ColorConverter::findDMCbyName(QString colorName)
     qDebug() << "ColorConverter::findDMCbyName";
     QString name, dmcNum, rgbString;
     QList<QStringList> DMC = readDMCColors();
-    QStringList found;
     for(int i=0; i<DMC.count(); i++)
     {
         QStringList dmcColor = DMC[i];
