@@ -12,6 +12,8 @@ public:
 
 private:
     static QVector<QString> dmcBefore;
+    QList<QColor> colors;
+
 
 };
 

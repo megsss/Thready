@@ -44,8 +44,9 @@ void dmcColorList::initializeDMCList()
         qDebug() << greenString;
         green = greenString.toInt();
 
-        rgb = QColor(red, blue, green);
+        rgb = QColor(red, blue, green).toRgb();
         qDebug() << rgb;
+        //rgb.toRgb();
 
         rgbString = ssList.value(5);
         qDebug() << rgbString;
@@ -60,14 +61,4 @@ void dmcColorList::initializeDMCList()
 
     dmcFile.close();
     qDebug() << "Done reading file";
-
-    /*
-    for (int i = 0; i < dmcList.count(); ++i) {
-        qDebug() << dmcList[i].rgbVal();
-    }
-   */
-
-    //dDebug() << dmcBefore.count();
-
-
 }

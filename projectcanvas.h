@@ -57,6 +57,7 @@ private:
     void drawEraserAt(const QPointF &endPoint);
     void eraseStrokesUnder(QGraphicsEllipseItem *item);
     void fillSquare(const QPointF &position);
+    void addAidaGraph(QPainter *painter, int &size);
 
     ToolType tool;
     bool drawing;

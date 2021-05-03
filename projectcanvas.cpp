@@ -2,6 +2,7 @@
 #include "resizablepixmapitem.h"
 #include <QGraphicsScene>
 #include <QGraphicsView>
+#include <QGraphicsItem>
 #include <QMimeData>
 #include <QGraphicsSceneDragDropEvent>
 #include <QGraphicsSceneMouseEvent>
@@ -76,8 +77,9 @@ void ProjectCanvas::mousePressEvent(QGraphicsSceneMouseEvent *event)
             drawing = true;
         }
         if(tool == ToolType::Fill){
-            QPointF position = event->scenePos();
-            fillSquare(position);
+            //QPointF position = event->scenePos();
+
+            //fillSquare(p, position);
             drawing = true;
         }else{
             QGraphicsScene::mousePressEvent(event);
@@ -169,7 +171,7 @@ void ProjectCanvas::drawLineTo(const QPointF &endPoint)
     QGraphicsLineItem  *localLine = new QGraphicsLineItem(QLineF(lastPenPoint,endPoint));
     QPen mPen;
     mPen.setWidth(3);
-    mPen.setColor(Qt::black);
+    mPen.setColor(getPenColor());
     localLine->setPen(mPen);
     lineGroup->addToGroup(localLine);
 
@@ -223,12 +225,45 @@ void ProjectCanvas::eraseStrokesUnder(QGraphicsEllipseItem *item)
 void ProjectCanvas::fillSquare(const QPointF &position)
 {
     qDebug() << position;
-    QPainter p;
     QPainterPath path;
     path.setFillRule(Qt::FillRule::OddEvenFill);
-    path.currentPosition();
+    QPainter p;
     p.fillPath(path, Qt::BrushStyle::SolidPattern);
 
+}
+
+void ProjectCanvas::addAidaGraph(QPainter *painter, int &size)
+{
+    QRectF rect = QRect(50,50, 400, 400);
+
+    //addRect(rect);
+    painter->drawRect(rect);
+
+    // how far apart the lines will be
+    qreal left = int(rect.left()) - (int(rect.left()) % size);
+    qDebug() << left;
+    qreal top = int(rect.top()) - (int(rect.top()) % size);
+    qDebug() << top;
+
+    //for(qreal x = rect.left(); x < rect.right(); x+= size){
+    //    addRect(QRect(x, rect.top(), size, size));
+    //}
+    QGraphicsRectItem * rectItem;
+    rectItem->setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemIsFocusable);
+
+    //create the lines
+    //for (qreal x = left; x < rect.right(); x += aidaSize)
+    //addLine(QLineF(x, rect.top(), x, rect.bottom()));
+    //addRect(QRect(x, rect.top(), left, left));
+    for (qreal x = left + size; x < rect.right(); x += size)
+    //p->drawLine(QLineF(x, rect.top(), x, rect.bottom()));
+    addLine(QLineF(x, rect.top(), x, rect.bottom()));
+
+    for (qreal y = top + size; y < rect.bottom(); y += size)
+    //p->drawLine(QLineF(rect.left(), y, rect.right(), y));
+    addLine(QLineF(rect.left(), y, rect.right(), y));
+    //for (qreal y = top; y < rect.bottom(); y += aidaSize)
+    //addRect(QRect(rect.left(), y, top, top));
 }
 
 ProjectCanvas::ToolType ProjectCanvas::getTool() const
@@ -303,21 +338,31 @@ void ProjectCanvas::setPenColor(const QColor &value)
 
 void ProjectCanvas::addAidaGraphItem(const int &aidaSize)
 {
-    QRect rect = QRect(50,50, 350, 350);
-    //rect.in
+    QRectF rect = QRect(50,50, 400, 400);
     addRect(rect);
 
     // how far apart the lines will be
     qreal left = int(rect.left()) - (int(rect.left()) % aidaSize);
+    qDebug() << left;
     qreal top = int(rect.top()) - (int(rect.top()) % aidaSize);
+    qDebug() << top;
+
+    //for(qreal x = rect.left(); x < rect.right(); x+= size){
+    //    addRect(QRect(x, rect.top(), size, size));
+    //}
+
+    //QGraphicsRectItem * rectItem;
+    //rectItem->setFlags(QGraphicsItem::ItemIsMovable);
 
     //create the lines
-    for (qreal x = left + aidaSize; x < rect.right(); x += aidaSize)
     //for (qreal x = left; x < rect.right(); x += aidaSize)
+    //addLine(QLineF(x, rect.top(), x, rect.bottom()));
     //addRect(QRect(x, rect.top(), left, left));
+    for (qreal x = left + aidaSize; x < rect.right(); x += aidaSize)
     addLine(QLineF(x, rect.top(), x, rect.bottom()));
+
     for (qreal y = top + aidaSize; y < rect.bottom(); y += aidaSize)
+    addLine(QLineF(rect.left(), y, rect.right(), y));
     //for (qreal y = top; y < rect.bottom(); y += aidaSize)
     //addRect(QRect(rect.left(), y, top, top));
-    addLine(QLineF(rect.left(), y, rect.right(), y));
 }
