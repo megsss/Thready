@@ -6,16 +6,27 @@
 ColorPaletteList::ColorPaletteList(QWidget *parent) : QListWidget(parent)
 {
     setMinimumWidth(200);
-    setMaximumWidth(300);
+    setMaximumHeight(300);
     setSelectionMode(QAbstractItemView::SingleSelection);
-    setViewMode(QListView::IconMode);
+    setViewMode(QListView::ListMode);
+    setFlow(Flow::TopToBottom);
 
 }
 
 void ColorPaletteList::addColorToList(QStringList &color)
 {
-    QString string = color.value(2);
-    addItem(string);
+
+    QString dmcNum = color.value(0);
+    QString colorName = color.value(1);
+    QColor dmcColor = QColor(color.value(2).toInt(), color.value(3).toInt(), color.value(4).toInt());
+    QListWidgetItem *newItem = new QListWidgetItem;
+    QFont f;
+    f.setPointSize(1); // It cannot be 0
+    newItem->setText(colorName);
+    QPixmap pix(20, 20);
+    pix.fill(dmcColor);
+    newItem->setIcon(QIcon(pix));
+    addItem(newItem);
 
 }
 
@@ -27,7 +38,7 @@ void ColorPaletteList::startDrag(Qt::DropActions supportedActions)
         QDrag* drag = new QDrag(this);
         QMimeData *mimeData = new QMimeData;
 
-        QColor color(items[0]->text());
+        QColor color(items[0]->icon());
 
         mimeData->setColorData(color);
 
