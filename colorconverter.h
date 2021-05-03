@@ -11,6 +11,8 @@ public:
     static QColor findClosestColor(QColor &color);
     static int compareColors(QColor &color, QColor &dmcColor);
     static QStringList findDMCbyRBGColor(QString color);
+    static QStringList findDMCbyName(QString colorName);
+    static QList<QStringList> readDMCColors();
 };
 
 #endif // COLORCONVERTER_H
