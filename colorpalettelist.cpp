@@ -10,6 +10,7 @@ ColorPaletteList::ColorPaletteList(QWidget *parent) : QListWidget(parent)
     setSelectionMode(QAbstractItemView::SingleSelection);
     setViewMode(QListView::ListMode);
     setFlow(Flow::TopToBottom);
+    setGeometry(900, 450, 200, 200);
 
 }
 
@@ -38,7 +39,7 @@ void ColorPaletteList::startDrag(Qt::DropActions supportedActions)
         QDrag* drag = new QDrag(this);
         QMimeData *mimeData = new QMimeData;
 
-        QColor color(items[0]->icon());
+        QColor color(items[0]->text());
 
         mimeData->setColorData(color);
 
