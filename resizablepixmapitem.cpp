@@ -33,8 +33,8 @@ void ResizablePixmapItem::paint(QPainter *painter, const QStyleOptionGraphicsIte
     Q_UNUSED(widget);
     painter->save();
 
-    //painter->setBrush(brush());
-    //painter->drawRect(rect());
+    painter->setBrush(brush());
+    painter->drawRect(rect());
 
     painter->drawPixmap(boundingRect(),mPixmap,mPixmap.rect());
     drawHandlesIfNecessary();

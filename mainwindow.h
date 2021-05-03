@@ -52,6 +52,8 @@ private slots:
 
     void on_actionPen_triggered();
 
+    void on_actionAdd_Aida_Template_triggered();
+
 private:
     void setActiveTool(ProjectCanvas::ToolType tool);
     Ui::MainWindow *ui;

@@ -289,15 +289,6 @@
     <string>Add Image</string>
    </property>
   </action>
-  <action name="actionAdd_Aida_Template">
-   <property name="icon">
-    <iconset resource="resources.qrc">
-     <normaloff>:/images/50/grid.png</normaloff>:/images/50/grid.png</iconset>
-   </property>
-   <property name="text">
-    <string>Add Aida Template...</string>
-   </property>
-  </action>
   <action name="actionFill_Color">
    <property name="icon">
     <iconset resource="resources.qrc">
@@ -359,6 +350,15 @@
    </property>
    <property name="text">
     <string>Pen</string>
+   </property>
+  </action>
+  <action name="actionAdd_Aida_Template">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/images/50/grid.png</normaloff>:/images/50/grid.png</iconset>
+   </property>
+   <property name="text">
+    <string>Add Aida Template...</string>
    </property>
   </action>
  </widget>

@@ -2,17 +2,18 @@
 #define COLORCONVERTER_H
 #include <QColor>
 #include <QList>
+#include "dmcfloss.h"
 
 
 class ColorConverter
 {
 public:
-    QList<QColor> dmcList;
+    QList<DMCFloss> dmcList;
     ColorConverter();
-    QColor RGBtoDMC(QColor color);
+    QColor RGBtoDMC(QColor &color);
     QColor DMCtoRGB(QColor color);
-    void findClosestColor(QColor color);
-    void compareColors(QColor dmcColor, QColor color);
+    void findClosestColor(QColor &color);
+    int compareColors(QColor &dmcColor, QColor &color);
 };
 
 #endif // COLORCONVERTER_H

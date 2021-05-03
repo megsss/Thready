@@ -14,7 +14,8 @@ public:
            Eraser,
            Pen,
            Fill,
-           Eyedropper
+           Eyedropper,
+           AidaGraph
        };
 
     ToolType getTool() const;
@@ -24,6 +25,8 @@ public:
 
     QColor getPenColor() const;
     void setPenColor(const QColor &value);
+
+    void addAidaGraphItem(const int &aidaSize);
 
     int getPenWidth() const;
     void setPenWidth(int value);
@@ -53,6 +56,7 @@ private:
     void drawLineTo(const QPointF &endPoint);
     void drawEraserAt(const QPointF &endPoint);
     void eraseStrokesUnder(QGraphicsEllipseItem *item);
+    void fillSquare(const QPointF &position);
 
     ToolType tool;
     bool drawing;
@@ -64,7 +68,6 @@ private:
 
     QGraphicsLineItem * horGuideLine;
     QGraphicsLineItem * verGuideLine;
-
     QColor penColor;
     int penWidth;
     Qt::PenStyle penStyle;

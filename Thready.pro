@@ -21,6 +21,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     projectcanvas.cpp \
+    resizableaidagraphitem.cpp \
     resizablehandlerect.cpp \
     resizablepixmapitem.cpp \
     view.cpp
@@ -35,6 +36,7 @@ HEADERS += \
     handleitem.h \
     mainwindow.h \
     projectcanvas.h \
+    resizableaidagraphitem.h \
     resizablehandlerect.h \
     resizablepixmapitem.h \
     view.h
@@ -49,3 +51,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     resources.qrc
+
+DISTFILES +=

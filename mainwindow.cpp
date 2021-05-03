@@ -54,6 +54,7 @@ void MainWindow::on_actionExit_triggered()
 void MainWindow::quitApp()
 {
     qDebug() << "Quitting app";
+    colorDialog.close();
     QApplication::quit();
 }
 
@@ -145,12 +146,14 @@ void MainWindow::on_actionFill_Color_triggered()
     setCursor(cursor);
     statusBar()->showMessage("Current tool is Fill");
     canvas->setTool(ProjectCanvas::Fill);
+    canvas->setBrushStyle(Qt::BrushStyle::SolidPattern);
     setActiveTool(ProjectCanvas::Fill);
     QColor color = colorDialog.getColor(Qt::black,this);
 
     if(color.isValid()){
         canvas->setFillColor(color);
     }
+    //QPointer position = pos();
 
 }
 
@@ -177,6 +180,16 @@ void MainWindow::on_actionPen_triggered()
     if(color.isValid()){
         canvas->setFillColor(color);
     }
+}
+
+void MainWindow::on_actionAdd_Aida_Template_triggered()
+{
+
+    canvas->setTool(ProjectCanvas::AidaGraph);
+    statusBar()->showMessage("Current tool is Aida Graph");
+    //TODO: create popup Dialog
+    canvas->addAidaGraphItem(16);
+    //canvas->addRect(QRect(50, 50, 400, 400));
 }
 
 void MainWindow::setActiveTool(ProjectCanvas::ToolType tool)
