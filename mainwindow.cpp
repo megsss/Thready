@@ -2,7 +2,6 @@
 #include "ui_mainwindow.h"
 #include "projectcanvas.h"
 #include "view.h"
-#include "colorpalette.h"
 #include "dmccolorlist.h"
 #include <QApplication>
 #include <QDebug>
@@ -13,6 +12,8 @@
 #include <QDir>
 #include <QMessageBox>
 #include <QColorDialog>
+#include "dmccombobox.h"
+#include "colorconverter.h"
 
 
 
@@ -24,7 +25,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->canvasLayout->setGeometry(QRect(0, 0, 750, 990));
     colorDialog.open();
     CreateNewProject();
-    dmcColorList::initializeDMCList();
+    colorPaletteList = new ColorPaletteList(this);
 
 }
 
@@ -39,6 +40,7 @@ void MainWindow::CreateNewProject()
     View * view = new View(this);
     view->setScene(canvas);
     ui->canvasLayout->addWidget(view);
+
 }
 
 
@@ -114,19 +116,20 @@ void MainWindow::on_actionEyedropper_triggered()
     canvas->setTool(ProjectCanvas::Eyedropper);
     setActiveTool(ProjectCanvas::Eyedropper);
     statusBar()->showMessage("Current tool is Eyedropper");
-    QColor color = colorDialog.getColor(Qt::white, this);
-    color.toRgb();
-    QString colorName = color.name();
-    statusBar()->showMessage("Color chosen: " + colorName);
-    qDebug() << colorName;
-
-    //TODO: color converter method that returns closest dmc color
-
     QCursor cursor(QPixmap(":/images/32/eyedropper_32.png"),32,32);
     //view->setCursor(cursor);
     setCursor(cursor);
 
+    QColor color = colorDialog.getColor(Qt::white, this);
+    color.toRgb();
+    QString colorName = color.name();
+    //statusBar()->showMessage("Color chosen: " + colorName);
+    QColor dmcColor = ColorConverter::findClosestColor(color);
+    QStringList colorStringList= ColorConverter::findDMCbyRBGColor(dmcColor.name());
+    qDebug() << colorStringList;
+    colorPaletteList->addColorToList(colorStringList);
 
+    statusBar()->showMessage(colorStringList.value(2));
 }
 
 void MainWindow::on_actionCursor_triggered()
@@ -149,11 +152,16 @@ void MainWindow::on_actionFill_Color_triggered()
     canvas->setBrushStyle(Qt::BrushStyle::SolidPattern);
     setActiveTool(ProjectCanvas::Fill);
     QColor color = colorDialog.getColor(Qt::black,this);
+    QColor dmcColor = ColorConverter::findClosestColor(color);
+    qDebug() << dmcColor;
 
-    if(color.isValid()){
-        canvas->setFillColor(color);
+    if(dmcColor.isValid()){
+        canvas->setFillColor(dmcColor);
+        QStringList colorStringList= ColorConverter::findDMCbyRBGColor(dmcColor.name());
+        colorPaletteList->addColorToList(colorStringList);
+        statusBar()->showMessage(colorStringList.value(2));
     }
-    //QPointer position = pos();
+
 
 }
 
@@ -175,10 +183,16 @@ void MainWindow::on_actionPen_triggered()
     statusBar()->showMessage("Current tool is Pen");
     canvas->setTool(ProjectCanvas::Pen);
     setActiveTool(ProjectCanvas::Pen);
-    QColor color = colorDialog.getColor(Qt::black,this);
 
-    if(color.isValid()){
-        canvas->setFillColor(color);
+    QColor color = colorDialog.getColor(Qt::red, this);
+    QColor dmcColor = ColorConverter::findClosestColor(color);
+
+    if(dmcColor.isValid()){
+        canvas->setPenColor(dmcColor);
+
+        QStringList colorStringList= ColorConverter::findDMCbyRBGColor(dmcColor.name());
+        statusBar()->showMessage(colorStringList.value());
+        colorPaletteList->addColorToList(colorStringList);
     }
 }
 
@@ -187,9 +201,7 @@ void MainWindow::on_actionAdd_Aida_Template_triggered()
 
     canvas->setTool(ProjectCanvas::AidaGraph);
     statusBar()->showMessage("Current tool is Aida Graph");
-    //TODO: create popup Dialog
     canvas->addAidaGraphItem(16);
-    //canvas->addRect(QRect(50, 50, 400, 400));
 }
 
 void MainWindow::setActiveTool(ProjectCanvas::ToolType tool)

@@ -8,6 +8,7 @@ class ColorPaletteList  : public QListWidget
     Q_OBJECT
 public:
     explicit ColorPaletteList(QWidget *parent = nullptr);
+    void addColorToList(QStringList &color);
 
 signals:
 

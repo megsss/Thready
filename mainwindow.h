@@ -6,7 +6,7 @@
 #include <QGraphicsView>
 #include <QColorDialog>
 #include "projectcanvas.h"
-#include "colorpalette.h"
+#include "colorpalettelist.h"
 #include "view.h"
 
 QT_BEGIN_NAMESPACE
@@ -20,6 +20,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    ColorPaletteList * colorPaletteList;
 
     void CreateNewProject();
 
@@ -59,8 +60,8 @@ private:
     Ui::MainWindow *ui;
     ProjectCanvas *canvas;
     View * view;
-    ColorPalette * colorPalette;
     QColorDialog colorDialog;
+
 
 };
 #endif // MAINWINDOW_H

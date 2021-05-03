@@ -12,6 +12,13 @@ ColorPaletteList::ColorPaletteList(QWidget *parent) : QListWidget(parent)
 
 }
 
+void ColorPaletteList::addColorToList(QStringList &color)
+{
+    QString string = color.value(2);
+    addItem(string);
+
+}
+
 void ColorPaletteList::startDrag(Qt::DropActions supportedActions)
 {
     QList<QListWidgetItem *> items = selectedItems();

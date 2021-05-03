@@ -8,12 +8,9 @@
 class ColorConverter
 {
 public:
-    QList<DMCFloss> dmcList;
-    ColorConverter();
-    QColor RGBtoDMC(QColor &color);
-    QColor DMCtoRGB(QColor color);
-    void findClosestColor(QColor &color);
-    int compareColors(QColor &dmcColor, QColor &color);
+    static QColor findClosestColor(QColor &color);
+    static int compareColors(QColor &color, QColor &dmcColor);
+    static QStringList findDMCbyRBGColor(QString color);
 };
 
 #endif // COLORCONVERTER_H
