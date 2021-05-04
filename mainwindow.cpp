@@ -46,6 +46,7 @@ void MainWindow::setUpPalettes()
     ui->userColorPaletteLayout->addWidget(colorPaletteList);
     dmcColorPaletteList = new DMCColorPalette(this);
     ui->dmcPaletteLayout->addWidget(dmcColorPaletteList);
+    connect(colorPaletteList, &ColorPaletteList::itemClicked, this, &MainWindow::on_colorPaletteList_itemDoubleClicked);
 }
 
 

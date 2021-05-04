@@ -12,6 +12,7 @@ public:
     void removeColorFromList(QListWidgetItem *colorItem);
 
 signals:
+     void itemDoubleClicked(QListWidgetItem *item);
 
 public slots:
 
