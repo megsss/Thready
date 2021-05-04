@@ -27,6 +27,8 @@ public:
     void CreateNewProject();
 
 private slots:
+    void setUpPalettes();
+
     void on_actionExit_triggered();
 
     void on_actionSave_triggered();
@@ -42,8 +44,6 @@ private slots:
     void on_actionRedo_triggered();
 
     void on_actionAdd_Image_triggered();
-
-    void on_actionColor_Wheel_triggered();
 
     void on_actionEyedropper_triggered();
 
@@ -63,6 +63,7 @@ private:
     ProjectCanvas *canvas;
     View * view;
     QColorDialog colorDialog;
+    QPushButton * paletteButton;
 
 
 };

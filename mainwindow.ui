@@ -141,7 +141,6 @@
     <addaction name="actionCursor"/>
     <addaction name="actionEyedropper"/>
     <addaction name="actionFill_Color"/>
-    <addaction name="actionColor_Wheel"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
@@ -183,7 +182,6 @@
    <addaction name="actionAdd_Image"/>
    <addaction name="actionEyedropper"/>
    <addaction name="actionFill_Color"/>
-   <addaction name="actionColor_Wheel"/>
    <addaction name="actionAdd_Color_Palette"/>
    <addaction name="actionAdd_Aida_Template"/>
   </widget>
@@ -278,15 +276,6 @@
    </property>
    <property name="text">
     <string>Eyedropper</string>
-   </property>
-  </action>
-  <action name="actionColor_Wheel">
-   <property name="icon">
-    <iconset resource="resources.qrc">
-     <normaloff>:/images/50/colorWheel.png</normaloff>:/images/50/colorWheel.png</iconset>
-   </property>
-   <property name="text">
-    <string>Color Wheel</string>
    </property>
   </action>
   <action name="actionCursor">

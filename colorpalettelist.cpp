@@ -10,7 +10,7 @@ ColorPaletteList::ColorPaletteList(QWidget *parent) : QListWidget(parent)
     setSelectionMode(QAbstractItemView::SingleSelection);
     setViewMode(QListView::ListMode);
     setFlow(Flow::TopToBottom);
-    setGeometry(900, 450, 200, 200);
+    setGeometry(900, 90, 200, 200);
 
 }
 

@@ -6,7 +6,7 @@
 
 DMCColorPalette::DMCColorPalette(QWidget *parent) : QListWidget(parent)
 {
-    setGeometry(1150, 450, 200, 200);
+    setGeometry(1150, 90, 200, 200);
     setMinimumWidth(200);
     setMaximumHeight(300);
     setSelectionMode(QAbstractItemView::SingleSelection);
@@ -25,11 +25,12 @@ void DMCColorPalette::initializeDMCList()
         QStringList dmcColor = DMC[i];
         addDMCColorToList(dmcColor);
     }
+    qDebug() << "All colors from file added to list";
 }
 
 void DMCColorPalette::addDMCColorToList(QStringList &color)
 {
-    qDebug() << "DMCColorPalette::addDMCColorToList";
+    //qDebug() << "DMCColorPalette::addDMCColorToList";
     QString dmcNum = color.value(0);
     QString colorName = color.value(1);
     QColor dmcColor = QColor(color.value(2).toInt(), color.value(3).toInt(), color.value(4).toInt());
