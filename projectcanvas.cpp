@@ -334,22 +334,10 @@ void ProjectCanvas::addAidaGraphItem(const int &aidaSize)
     qreal top = int(rect.top()) - (int(rect.top()) % aidaSize);
     qDebug() << top;
 
-    //for(qreal x = rect.left(); x < rect.right(); x+= size){
-    //    addRect(QRect(x, rect.top(), size, size));
-    //}
-
-    //QGraphicsRectItem * rectItem;
-    //rectItem->setFlags(QGraphicsItem::ItemIsMovable);
-
     //create the lines
-    //for (qreal x = left; x < rect.right(); x += aidaSize)
-    //addLine(QLineF(x, rect.top(), x, rect.bottom()));
-    //addRect(QRect(x, rect.top(), left, left));
     for (qreal x = left + aidaSize; x < rect.right(); x += aidaSize)
     addLine(QLineF(x, rect.top(), x, rect.bottom()));
 
     for (qreal y = top + aidaSize; y < rect.bottom(); y += aidaSize)
     addLine(QLineF(rect.left(), y, rect.right(), y));
-    //for (qreal y = top; y < rect.bottom(); y += aidaSize)
-    //addRect(QRect(rect.left(), y, top, top));
 }
