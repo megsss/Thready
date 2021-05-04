@@ -63,7 +63,8 @@ private:
     ProjectCanvas *canvas;
     View * view;
     QColorDialog colorDialog;
-    QPushButton * paletteButton;
+    QPushButton * addToPaletteButton;
+    QPushButton * removeFromPaletteButton;
 
 
 };
