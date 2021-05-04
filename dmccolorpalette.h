@@ -15,6 +15,7 @@ private:
     void initializeDMCList();
 
 signals:
+    void itemDoubleClicked(QListWidgetItem *item);
 
 public slots:
 

@@ -57,6 +57,7 @@ void MainWindow::setUpPalettes()
     dmcColorPaletteList = new DMCColorPalette(this);
     ui->dmcPaletteLayout->addWidget(dmcColorPaletteList);
     connect(colorPaletteList, &ColorPaletteList::itemClicked, this, &MainWindow::on_colorPaletteList_itemDoubleClicked);
+    connect(dmcColorPaletteList, &DMCColorPalette::itemClicked, this, &MainWindow::on_dmcColorPaletteList_itemDoubleClicked);
 }
 
 
@@ -246,6 +247,16 @@ void MainWindow::on_colorPaletteList_itemDoubleClicked(QListWidgetItem *item)
     }
 }
 
+void MainWindow::on_dmcColorPaletteList_itemDoubleClicked(QListWidgetItem *item)
+{
+    qDebug() << "Item in user palette double clicked";
+    QString itemColorName = item->text();
+    QStringList colorStringList = ColorConverter::findDMCbyName(itemColorName);
+    colorPaletteList->addColorToList(colorStringList);
+}
+
+
+
 void MainWindow::on_removeFromPaletteButton_clicked()
 {
     qDebug() << "Remove from palette button clicked";
@@ -271,6 +282,7 @@ void MainWindow::on_dmcAddButton_clicked()
 
 }
 
+//clicking the 'Current pen color' button changes current pen color and adds to color palette list
 void MainWindow::on_penToolColorButton_clicked()
 {
     qDebug() << "Pen Current Color button clicked";
@@ -283,6 +295,7 @@ void MainWindow::on_penToolColorButton_clicked()
     colorPaletteList->addColorToList(ss);
 }
 
+//clicking the 'Current fill color' button changes current fill color and adds to color palette list
 void MainWindow::on_fillToolColorButton_clicked()
 {
     qDebug() << "Fill Current Color button clicked";
@@ -294,3 +307,5 @@ void MainWindow::on_fillToolColorButton_clicked()
     QStringList ss = ColorConverter::findDMCbyRBGColor(rgbVal);
     colorPaletteList->addColorToList(ss);
 }
+
+
