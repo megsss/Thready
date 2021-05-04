@@ -109,25 +109,6 @@ void MainWindow::on_actionAdd_Image_triggered()
     canvas->addImageItem(fileName);
 }
 
-void MainWindow::on_actionEyedropper_triggered()
-{
-    qDebug() << "Eyedropper toolbar button triggered";
-    canvas->setTool(ProjectCanvas::Eyedropper);
-    setActiveTool(ProjectCanvas::Eyedropper);
-    statusBar()->showMessage("Current tool is Eyedropper");
-    QCursor cursor(QPixmap(":/images/32/eyedropper_32.png"),32,32);
-    //view->setCursor(cursor);
-    setCursor(cursor);
-
-    QColor color = colorDialog.getColor(Qt::white, this);
-    color.toRgb();
-    QString colorName = color.name();
-    QColor dmcColor = ColorConverter::findClosestColor(color);
-    QStringList colorStringList= ColorConverter::findDMCbyRBGColor(dmcColor.name());
-    qDebug() << colorStringList;
-    colorPaletteList->addColorToList(colorStringList);
-}
-
 void MainWindow::on_actionCursor_triggered()
 {
     qDebug() << "Cursor button triggered";
@@ -204,7 +185,6 @@ void MainWindow::setActiveTool(ProjectCanvas::ToolType tool)
     {
         ui->actionCursor->setIcon(QIcon(":/images/50/cursor-50.png"));
         ui->actionEraser->setIcon(QIcon(":/images/50/eraser.png"));
-        ui->actionEyedropper->setIcon(QIcon(":/images/50/dropper-50.png"));
         ui->actionFill_Color->setIcon(QIcon(":/images/50/fillColor.png"));
         ui->actionPen->setIcon(QIcon(":/images/50/pen-50.png"));
     }
@@ -213,7 +193,6 @@ void MainWindow::setActiveTool(ProjectCanvas::ToolType tool)
     {
         ui->actionCursor->setIcon(QIcon(":/images/50/cursor-50.png"));
         ui->actionEraser->setIcon(QIcon(":/images/50/eraser.png"));
-        ui->actionEyedropper->setIcon(QIcon(":/images/50/dropper-50.png"));
         ui->actionFill_Color->setIcon(QIcon(":/images/50/fillColor.png"));
         ui->actionPen->setIcon(QIcon(":/images/50/pen-50.png"));
     }
@@ -222,7 +201,6 @@ void MainWindow::setActiveTool(ProjectCanvas::ToolType tool)
     {
         ui->actionCursor->setIcon(QIcon(":/images/50/cursor-50.png"));
         ui->actionEraser->setIcon(QIcon(":/images/50/eraser.png"));
-        ui->actionEyedropper->setIcon(QIcon(":/images/50/dropper-50.png"));
         ui->actionFill_Color->setIcon(QIcon(":/images/50/fillColor.png"));
         ui->actionPen->setIcon(QIcon(":/images/50/pen-50.png"));
     }
@@ -231,7 +209,6 @@ void MainWindow::setActiveTool(ProjectCanvas::ToolType tool)
     {
         ui->actionCursor->setIcon(QIcon(":/images/50/cursor-50.png"));
         ui->actionEraser->setIcon(QIcon(":/images/50/eraser.png"));
-        ui->actionEyedropper->setIcon(QIcon(":/images/50/dropper-50.png"));
         ui->actionFill_Color->setIcon(QIcon(":/images/50/fillColor.png"));
         ui->actionPen->setIcon(QIcon(":/images/50/pen-50.png"));
     }
@@ -240,7 +217,6 @@ void MainWindow::setActiveTool(ProjectCanvas::ToolType tool)
     {
         ui->actionCursor->setIcon(QIcon(":/images/50/cursor-50.png"));
         ui->actionEraser->setIcon(QIcon(":/images/50/eraser.png"));
-        ui->actionEyedropper->setIcon(QIcon(":/images/50/dropper-50.png"));
         ui->actionFill_Color->setIcon(QIcon(":/images/50/fillColor.png"));
         ui->actionPen->setIcon(QIcon(":/images/50/pen-50.png"));
     }
@@ -249,14 +225,13 @@ void MainWindow::setActiveTool(ProjectCanvas::ToolType tool)
 void MainWindow::on_addToPaletteButton_clicked()
 {
     qDebug() << "Add to palette button clicked";
-    QColor userSelectedColor = colorDialog.getColor(Qt::black, this);
+    QColor userSelectedColor = colorDialog.getColor(Qt::white, this);
     //userSelectedColor.toRgb();
     QColor matchedDMCColor = ColorConverter::findClosestColor(userSelectedColor);
     QStringList colorStringList= ColorConverter::findDMCbyRBGColor(matchedDMCColor.name());
     qDebug() << "color added to user palette: ";
     qDebug() << colorStringList;
     colorPaletteList->addColorToList(colorStringList);
-
 }
 
 void MainWindow::on_colorPaletteList_itemDoubleClicked(QListWidgetItem *item)
@@ -267,9 +242,14 @@ void MainWindow::on_colorPaletteList_itemDoubleClicked(QListWidgetItem *item)
 void MainWindow::on_removeFromPaletteButton_clicked()
 {
     qDebug() << "Remove from palette button clicked";
+    QListWidgetItem * itemToBeRemoved = colorPaletteList->takeItem(colorPaletteList->currentRow());
+    qDebug() << "item to be removed:";
+    qDebug() << itemToBeRemoved->text();
+    colorPaletteList->removeColorFromList(itemToBeRemoved);
 }
 
 void MainWindow::on_dmcColorPaletteList_itemDoubleClicked(QListWidgetItem *item)
 {
     qDebug() << "Item in dmc palette double clicked";
+
 }

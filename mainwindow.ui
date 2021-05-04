@@ -227,7 +227,6 @@
     <addaction name="separator"/>
     <addaction name="actionPen"/>
     <addaction name="actionCursor"/>
-    <addaction name="actionEyedropper"/>
     <addaction name="actionFill_Color"/>
    </widget>
    <addaction name="menuFile"/>
@@ -268,7 +267,6 @@
    <addaction name="actionPen"/>
    <addaction name="actionEraser"/>
    <addaction name="actionAdd_Image"/>
-   <addaction name="actionEyedropper"/>
    <addaction name="actionFill_Color"/>
    <addaction name="actionAdd_Color_Palette"/>
    <addaction name="actionAdd_Aida_Template"/>
@@ -355,15 +353,6 @@
    </property>
    <property name="text">
     <string>Add Color Palette...</string>
-   </property>
-  </action>
-  <action name="actionEyedropper">
-   <property name="icon">
-    <iconset resource="resources.qrc">
-     <normaloff>:/images/50/dropper-50.png</normaloff>:/images/50/dropper-50.png</iconset>
-   </property>
-   <property name="text">
-    <string>Eyedropper</string>
    </property>
   </action>
   <action name="actionCursor">
