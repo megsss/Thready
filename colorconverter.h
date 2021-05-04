@@ -13,6 +13,7 @@ public:
     static QStringList findDMCbyRBGColor(QString color);
     static QStringList findDMCbyName(QString colorName);
     static QList<QStringList> readDMCColors();
+    static QColor getColorByName(QStringList &color);
 };
 
 #endif // COLORCONVERTER_H

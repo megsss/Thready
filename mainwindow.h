@@ -61,7 +61,7 @@ private slots:
 
     void on_removeFromPaletteButton_clicked();
 
-    void on_dmcColorPaletteList_itemDoubleClicked(QListWidgetItem *item);
+    void on_dmcAddButton_clicked();
 
 private:
     void setActiveTool(ProjectCanvas::ToolType tool);

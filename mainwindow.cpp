@@ -128,16 +128,6 @@ void MainWindow::on_actionFill_Color_triggered()
     canvas->setTool(ProjectCanvas::Fill);
     canvas->setBrushStyle(Qt::BrushStyle::SolidPattern);
     setActiveTool(ProjectCanvas::Fill);
-    QColor color = colorDialog.getColor(Qt::black,this);
-    QColor dmcColor = ColorConverter::findClosestColor(color);
-    qDebug() << dmcColor;
-
-    if(dmcColor.isValid()){
-        canvas->setFillColor(dmcColor);
-        QStringList colorStringList= ColorConverter::findDMCbyRBGColor(dmcColor.name());
-        colorPaletteList->addColorToList(colorStringList);
-        statusBar()->showMessage(colorStringList.value(2));
-    }
 }
 
 void MainWindow::on_actionEraser_triggered()
@@ -158,15 +148,6 @@ void MainWindow::on_actionPen_triggered()
     statusBar()->showMessage("Current tool is Pen");
     canvas->setTool(ProjectCanvas::Pen);
     setActiveTool(ProjectCanvas::Pen);
-
-    QColor color = colorDialog.getColor(Qt::black, this);
-    QColor dmcColor = ColorConverter::findClosestColor(color);
-
-    if(dmcColor.isValid()){
-        canvas->setPenColor(dmcColor);
-        QStringList colorStringList= ColorConverter::findDMCbyRBGColor(dmcColor.name());
-        colorPaletteList->addColorToList(colorStringList);
-    }
 }
 
 void MainWindow::on_actionAdd_Aida_Template_triggered()
@@ -237,6 +218,12 @@ void MainWindow::on_addToPaletteButton_clicked()
 void MainWindow::on_colorPaletteList_itemDoubleClicked(QListWidgetItem *item)
 {
     qDebug() << "Item in user palette double clicked";
+    QString itemColorName = item->text();
+    QStringList colorStringList = ColorConverter::findDMCbyName(itemColorName);
+    QColor colorSelected = ColorConverter::getColorByName(colorStringList);
+    canvas->setPenColor(colorSelected);
+    canvas->setFillColor(colorSelected);
+    qDebug() << "pen and fill colors updated";
     //canvas->addRect();
 }
 
@@ -252,9 +239,15 @@ void MainWindow::on_removeFromPaletteButton_clicked()
     }
 }
 
-void MainWindow::on_dmcColorPaletteList_itemDoubleClicked(QListWidgetItem *item)
+void MainWindow::on_dmcAddButton_clicked()
 {
-    qDebug() << "Item in dmc palette double clicked: ";
-    qDebug() << item->text();
-    colorPaletteList->addItem(item);
+    qDebug() << "DMC add button clicked";
+
+    QListWidgetItem * dmcItem = dmcColorPaletteList->currentItem();
+    QString itemName = dmcItem->text();
+    QStringList item = ColorConverter::findDMCbyName(itemName);
+    qDebug() << "item to be added to my color palette:";
+    qDebug() << item.value(1);
+    colorPaletteList->addColorToList(item);
+
 }
