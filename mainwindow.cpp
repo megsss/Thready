@@ -41,12 +41,12 @@ void MainWindow::CreateNewProject()
 void MainWindow::setUpPalettes()
 {
     qDebug() << "MainWindow::setUpPalettes()";
-    //create QListWidgets for all DMC Colors and user's chosen colors
-
+    //create QListWidgets for all DMC Colors and user's chosen colors and insert into canvas layout
     colorPaletteList = new ColorPaletteList(this);
     ui->userColorPaletteLayout->addWidget(colorPaletteList);
     dmcColorPaletteList = new DMCColorPalette(this);
     ui->dmcPaletteLayout->addWidget(dmcColorPaletteList);
+    connect(colorPaletteList, &ColorPaletteList::itemClicked, this, &MainWindow::on_colorPaletteList_itemDoubleClicked);
 }
 
 
@@ -215,16 +215,23 @@ void MainWindow::on_addToPaletteButton_clicked()
     colorPaletteList->addColorToList(colorStringList);
 }
 
+//This method sets the active Pen/Fill olor
 void MainWindow::on_colorPaletteList_itemDoubleClicked(QListWidgetItem *item)
 {
     qDebug() << "Item in user palette double clicked";
     QString itemColorName = item->text();
     QStringList colorStringList = ColorConverter::findDMCbyName(itemColorName);
     QColor colorSelected = ColorConverter::getColorByName(colorStringList);
-    canvas->setPenColor(colorSelected);
-    canvas->setFillColor(colorSelected);
-    qDebug() << "pen and fill colors updated";
-    //canvas->addRect();
+    if(canvas->getTool() == ProjectCanvas::Pen)
+    {
+        canvas->setPenColor(colorSelected);
+        qDebug() << "pen color updated";
+    }
+    if(canvas->getTool() == ProjectCanvas::Fill)
+    {
+        canvas->setFillColor(colorSelected);
+        qDebug() << "fill color updated";
+    }
 }
 
 void MainWindow::on_removeFromPaletteButton_clicked()
