@@ -25,6 +25,7 @@ public:
     DMCColorPalette * dmcColorPaletteList;
 
     void CreateNewProject();
+    void updateButtonColor(QPushButton *b, QColor &color);
 
 private slots:
     void setUpPalettes();
@@ -62,6 +63,10 @@ private slots:
     void on_removeFromPaletteButton_clicked();
 
     void on_dmcAddButton_clicked();
+
+    void on_penToolColorButton_clicked();
+
+    void on_fillToolColorButton_clicked();
 
 private:
     void setActiveTool(ProjectCanvas::ToolType tool);
