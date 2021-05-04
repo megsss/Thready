@@ -15,7 +15,6 @@ SOURCES += \
     colorpalettelist.cpp \
     dmccolorpalette.cpp \
     dmcfloss.cpp \
-    doubleclickbutton.cpp \
     handleitem.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -30,7 +29,6 @@ HEADERS += \
     colorpalettelist.h \
     dmccolorpalette.h \
     dmcfloss.h \
-    doubleclickbutton.h \
     handleitem.h \
     mainwindow.h \
     projectcanvas.h \
