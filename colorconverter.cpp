@@ -5,7 +5,7 @@
 #include "dmcfloss.h"
 #include "mainwindow.h"
 
-
+//This method finds and returns the QColor of the closest DMC color to the color argument
 QColor ColorConverter::findClosestColor(QColor &color)
 {
     qDebug() << "ColorConverter::findClosestColor";
@@ -54,14 +54,17 @@ QColor ColorConverter::findClosestColor(QColor &color)
     return closestRGB;
 }
 
+//This method uses the euclidean formula to find and return the distance between two colors
 int ColorConverter::compareColors(QColor &color, QColor &dmcColor)
 {
     qDebug() << "ColorConverter::compareColors";
     int distance;
+    //euclidean distance formula
     distance = qAbs(color.red() - dmcColor.red()) + qAbs(color.green() - dmcColor.green()) + qAbs(color.blue() - dmcColor.blue());
     return distance;
 }
 
+//This method finds and returns the DMC QStringList that matches the rgb color argument
 QStringList ColorConverter::findDMCbyRBGColor(QString color)
 {
     qDebug() << "ColorConverter::findDMCbyRGBColor";
@@ -82,6 +85,7 @@ QStringList ColorConverter::findDMCbyRBGColor(QString color)
     }
 }
 
+//This method finds and returns the DMC QStringList that matches the colorName argument
 QStringList ColorConverter::findDMCbyName(QString colorName)
 {
     qDebug() << "ColorConverter::findDMCbyName";
