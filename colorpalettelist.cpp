@@ -13,7 +13,7 @@ ColorPaletteList::ColorPaletteList(QWidget *parent) : QListWidget(parent)
     setFlow(Flow::TopToBottom);
     setGeometry(900, 90, 200, 200);
     setDragEnabled(true);
-
+    setDragDropMode(DragDropMode::DragDrop);
 }
 
 void ColorPaletteList::addColorToList(QStringList &color)
