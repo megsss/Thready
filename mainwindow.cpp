@@ -11,6 +11,7 @@
 #include <QDir>
 #include <QMessageBox>
 #include <QColorDialog>
+#include <QPushButton>
 #include "colorconverter.h"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -19,12 +20,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     ui->canvasLayout->setGeometry(QRect(0, 0, 750, 990));
-    //colorDialog.open();
     CreateNewProject();
-    colorPaletteList = new ColorPaletteList(this);
-    dmcColorPaletteList = new DMCColorPalette(this);
-
-
+    setUpPalettes();
 }
 
 MainWindow::~MainWindow()
@@ -38,7 +35,15 @@ void MainWindow::CreateNewProject()
     View * view = new View(this);
     view->setScene(canvas);
     ui->canvasLayout->addWidget(view);
+}
 
+void MainWindow::setUpPalettes()
+{
+    colorPaletteList = new ColorPaletteList(this);
+    dmcColorPaletteList = new DMCColorPalette(this);
+    paletteButton = new QPushButton(this);
+    paletteButton->setText(QString("Add color to palette"));
+    paletteButton->setGeometry(900, 295, 200, 30);
 }
 
 
@@ -47,8 +52,6 @@ void MainWindow::on_actionExit_triggered()
     qDebug() << "Exit triggered";
     statusBar()->showMessage("App closing");
     QTimer::singleShot(3000, this, SLOT(quitApp()));
-
-
 }
 
 void MainWindow::quitApp()
@@ -103,12 +106,6 @@ void MainWindow::on_actionAdd_Image_triggered()
     canvas->addImageItem(fileName);
 }
 
-void MainWindow::on_actionColor_Wheel_triggered()
-{
-    colorDialog.open();
-    statusBar()->showMessage("Color Wheel");
-}
-
 void MainWindow::on_actionEyedropper_triggered()
 {
     canvas->setTool(ProjectCanvas::Eyedropper);
@@ -154,8 +151,6 @@ void MainWindow::on_actionFill_Color_triggered()
         colorPaletteList->addColorToList(colorStringList);
         statusBar()->showMessage(colorStringList.value(2));
     }
-
-
 }
 
 void MainWindow::on_actionEraser_triggered()
