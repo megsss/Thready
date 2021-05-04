@@ -21,6 +21,10 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     ui->canvasLayout->setGeometry(QRect(0, 0, 750, 990));
     CreateNewProject();
+    ui->penToolColorButton->setStyleSheet(QString("background-color: %1")
+                                           .arg(canvas->getPenColor().name()));
+    ui->fillToolColorButton->setStyleSheet(QString("background-color: %1")
+                                          .arg(canvas->getFillColor().name()));
     setUpPalettes();
 }
 
@@ -36,6 +40,12 @@ void MainWindow::CreateNewProject()
     View * view = new View(this);
     view->setScene(canvas);
     ui->canvasLayout->addWidget(view);
+}
+
+void MainWindow::updateButtonColor(QPushButton *b, QColor &color)
+{
+    b->setStyleSheet(QString("background-color: %1")
+                                          .arg(color.name()));
 }
 
 void MainWindow::setUpPalettes()
@@ -225,11 +235,13 @@ void MainWindow::on_colorPaletteList_itemDoubleClicked(QListWidgetItem *item)
     if(canvas->getTool() == ProjectCanvas::Pen)
     {
         canvas->setPenColor(colorSelected);
+        updateButtonColor(ui->penToolColorButton, colorSelected);
         qDebug() << "pen color updated";
     }
     if(canvas->getTool() == ProjectCanvas::Fill)
     {
         canvas->setFillColor(colorSelected);
+        updateButtonColor(ui->fillToolColorButton, colorSelected);
         qDebug() << "fill color updated";
     }
 }
@@ -257,4 +269,28 @@ void MainWindow::on_dmcAddButton_clicked()
     qDebug() << item.value(1);
     colorPaletteList->addColorToList(item);
 
+}
+
+void MainWindow::on_penToolColorButton_clicked()
+{
+    qDebug() << "Pen Current Color button clicked";
+    QColor newColor = colorDialog.getColor(Qt::white, this);
+    QColor newColorDMC = ColorConverter::findClosestColor(newColor);
+    canvas->setPenColor(newColorDMC);
+    QString rgbVal = newColorDMC.name();
+    updateButtonColor(ui->penToolColorButton, newColorDMC);
+    QStringList ss = ColorConverter::findDMCbyRBGColor(rgbVal);
+    colorPaletteList->addColorToList(ss);
+}
+
+void MainWindow::on_fillToolColorButton_clicked()
+{
+    qDebug() << "Fill Current Color button clicked";
+    QColor newColor = colorDialog.getColor(Qt::white, this);
+    QColor newColorDMC = ColorConverter::findClosestColor(newColor);
+    canvas->setFillColor(newColorDMC);
+    QString rgbVal = newColorDMC.name();
+    updateButtonColor(ui->fillToolColorButton, newColorDMC);
+    QStringList ss = ColorConverter::findDMCbyRBGColor(rgbVal);
+    colorPaletteList->addColorToList(ss);
 }

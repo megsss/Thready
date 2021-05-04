@@ -20,7 +20,7 @@ ProjectCanvas::ProjectCanvas(QObject *parent) : QGraphicsScene(parent),
     penColor(Qt::black),
     penWidth(2),
     penStyle(Qt::SolidLine),
-    fillColor(Qt::gray),
+    fillColor(Qt::black),
     brushStyle(Qt::SolidPattern)
 {
     setSceneRect(0, 0, 750, 990);
