@@ -237,19 +237,24 @@ void MainWindow::on_addToPaletteButton_clicked()
 void MainWindow::on_colorPaletteList_itemDoubleClicked(QListWidgetItem *item)
 {
     qDebug() << "Item in user palette double clicked";
+    //canvas->addRect();
 }
 
 void MainWindow::on_removeFromPaletteButton_clicked()
 {
     qDebug() << "Remove from palette button clicked";
-    QListWidgetItem * itemToBeRemoved = colorPaletteList->takeItem(colorPaletteList->currentRow());
-    qDebug() << "item to be removed:";
-    qDebug() << itemToBeRemoved->text();
-    colorPaletteList->removeColorFromList(itemToBeRemoved);
+    if(colorPaletteList->count() > 0)
+    {
+        QListWidgetItem * itemToBeRemoved = colorPaletteList->takeItem(colorPaletteList->currentRow());
+        qDebug() << "item to be removed:";
+        qDebug() << itemToBeRemoved->text();
+        colorPaletteList->removeColorFromList(itemToBeRemoved);
+    }
 }
 
 void MainWindow::on_dmcColorPaletteList_itemDoubleClicked(QListWidgetItem *item)
 {
-    qDebug() << "Item in dmc palette double clicked";
-
+    qDebug() << "Item in dmc palette double clicked: ";
+    qDebug() << item->text();
+    colorPaletteList->addItem(item);
 }
