@@ -95,16 +95,104 @@
     </property>
     <layout class="QHBoxLayout" name="canvasLayout"/>
    </widget>
-   <widget class="QWidget" name="verticalLayoutWidget">
+   <widget class="QGroupBox" name="paletteGroupBox">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
-      <x>1000</x>
-      <y>400</y>
-      <width>431</width>
-      <height>251</height>
+      <x>860</x>
+      <y>40</y>
+      <width>481</width>
+      <height>321</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="colorPaletteListLayout"/>
+    <property name="title">
+     <string>Palettes</string>
+    </property>
+    <widget class="QLabel" name="userPaletteLabel">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>40</y>
+       <width>121</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Your Color Palette</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="dmcPaletteLabel">
+     <property name="geometry">
+      <rect>
+       <x>330</x>
+       <y>40</y>
+       <width>81</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>DMC Colors</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="addToPaletteButton">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>270</y>
+       <width>111</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>+</string>
+     </property>
+     <property name="autoDefault">
+      <bool>false</bool>
+     </property>
+     <property name="default">
+      <bool>false</bool>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="removeFromPaletteButton">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>270</y>
+       <width>111</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>-</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="verticalLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>270</x>
+       <y>70</y>
+       <width>201</width>
+       <height>201</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="dmcPaletteLayout"/>
+    </widget>
+    <widget class="QWidget" name="verticalLayoutWidget_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>70</y>
+       <width>211</width>
+       <height>201</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="userColorPaletteLayout"/>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -139,7 +227,6 @@
     <addaction name="separator"/>
     <addaction name="actionPen"/>
     <addaction name="actionCursor"/>
-    <addaction name="actionEyedropper"/>
     <addaction name="actionFill_Color"/>
    </widget>
    <addaction name="menuFile"/>
@@ -180,7 +267,6 @@
    <addaction name="actionPen"/>
    <addaction name="actionEraser"/>
    <addaction name="actionAdd_Image"/>
-   <addaction name="actionEyedropper"/>
    <addaction name="actionFill_Color"/>
    <addaction name="actionAdd_Color_Palette"/>
    <addaction name="actionAdd_Aida_Template"/>
@@ -267,15 +353,6 @@
    </property>
    <property name="text">
     <string>Add Color Palette...</string>
-   </property>
-  </action>
-  <action name="actionEyedropper">
-   <property name="icon">
-    <iconset resource="resources.qrc">
-     <normaloff>:/images/50/dropper-50.png</normaloff>:/images/50/dropper-50.png</iconset>
-   </property>
-   <property name="text">
-    <string>Eyedropper</string>
    </property>
   </action>
   <action name="actionCursor">

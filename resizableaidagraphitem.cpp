@@ -2,11 +2,13 @@
 #include <QPen>
 #include <QGraphicsScene>
 #include <QPainter>
+
 /*
-ResizableAidaGraphItem::ResizableAidaGraphItem(int size)
+ResizableAidaGraphItem::ResizableAidaGraphItem(int size):
+    size_(size)
 {
     QRect rect = QRect(50,50, 350, 350);
-    //rect.in
+
     //addRect(rect);
 
     // how far apart the lines will be
@@ -14,11 +16,13 @@ ResizableAidaGraphItem::ResizableAidaGraphItem(int size)
     qreal top = int(rect.top()) - (int(rect.top()) % size);
     //create the lines
     for (qreal x = left + size; x < rect.right(); x += size)
-    //addLine(QLineF(x, rect.top(), x, rect.bottom()));
+    QLineF(x, rect.top(), x, rect.bottom());
     for (qreal y = top + size; y < rect.bottom(); y += size)
-        //addLine(QLineF(rect.left(), y, rect.right(), y));
+    QLineF(rect.left(), y, rect.right(), y);
 }
 */
+
+
 
 void ResizableAidaGraphItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {

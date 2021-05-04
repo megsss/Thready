@@ -20,9 +20,9 @@ public:
     void setAidaGraph(const QPixmap &value);
 
 private:
-    QPixmap mPixmap;
-    QRect aidaGraphSize;
-    QLineF aidaGraphLines;
+    int size_;
+    QRect aidaGraphSize_;
+    QLineF aidaGraphLines_;
 };
 
 #endif // RESIZABLEAIDAGRAPHITEM_H

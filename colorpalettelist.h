@@ -9,6 +9,7 @@ class ColorPaletteList  : public QListWidget
 public:
     explicit ColorPaletteList(QWidget *parent = nullptr);
     void addColorToList(QStringList &color);
+    void removeColorFromList(QListWidgetItem *colorItem);
 
 signals:
 

@@ -31,6 +31,12 @@ void ColorPaletteList::addColorToList(QStringList &color)
 
 }
 
+void ColorPaletteList::removeColorFromList(QListWidgetItem * colorItem)
+{
+    removeItemWidget(colorItem);
+    update();
+}
+
 void ColorPaletteList::startDrag(Qt::DropActions supportedActions)
 {
     QList<QListWidgetItem *> items = selectedItems();

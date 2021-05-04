@@ -45,8 +45,6 @@ private slots:
 
     void on_actionAdd_Image_triggered();
 
-    void on_actionEyedropper_triggered();
-
     void on_actionCursor_triggered();
 
     void on_actionFill_Color_triggered();
@@ -56,6 +54,14 @@ private slots:
     void on_actionPen_triggered();
 
     void on_actionAdd_Aida_Template_triggered();
+
+    void on_addToPaletteButton_clicked();
+
+    void on_colorPaletteList_itemDoubleClicked(QListWidgetItem *item);
+
+    void on_removeFromPaletteButton_clicked();
+
+    void on_dmcColorPaletteList_itemDoubleClicked(QListWidgetItem *item);
 
 private:
     void setActiveTool(ProjectCanvas::ToolType tool);
