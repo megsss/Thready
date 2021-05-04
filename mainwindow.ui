@@ -113,14 +113,14 @@
     <widget class="QLabel" name="userPaletteLabel">
      <property name="geometry">
       <rect>
-       <x>60</x>
+       <x>70</x>
        <y>40</y>
-       <width>121</width>
+       <width>101</width>
        <height>16</height>
       </rect>
      </property>
      <property name="text">
-      <string>Your Color Palette</string>
+      <string>My Color Palette</string>
      </property>
     </widget>
     <widget class="QLabel" name="dmcPaletteLabel">
