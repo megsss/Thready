@@ -1,4 +1,5 @@
 #include "colorpalettelist.h"
+#include "colorconverter.h"
 #include <QDrag>
 #include <QMimeData>
 #include <QDebug>
@@ -11,6 +12,7 @@ ColorPaletteList::ColorPaletteList(QWidget *parent) : QListWidget(parent)
     setViewMode(QListView::ListMode);
     setFlow(Flow::TopToBottom);
     setGeometry(900, 90, 200, 200);
+    setDragEnabled(true);
 
 }
 
@@ -39,25 +41,24 @@ void ColorPaletteList::removeColorFromList(QListWidgetItem * colorItem)
 
 void ColorPaletteList::startDrag(Qt::DropActions supportedActions)
 {
-    QList<QListWidgetItem *> items = selectedItems();
-    if(items.count() > 0){
+    QListWidgetItem * item = takeItem(currentRow());
+    QDrag* drag = new QDrag(this);
+    QMimeData *mimeData = new QMimeData;
+    QString colorName = item->text();
 
-        QDrag* drag = new QDrag(this);
-        QMimeData *mimeData = new QMimeData;
+    QStringList s = ColorConverter::findDMCbyName(colorName);
+    QColor color = ColorConverter::getColorByName(s);
 
-        QColor color(items[0]->text());
+    mimeData->setColorData(color);
+    mimeData->setText(s.value(1));
 
-        mimeData->setColorData(color);
-
-        QPixmap pix(20, 20);
-        pix.fill(color);
-        drag->setPixmap(pix);
-        drag->setMimeData(mimeData);
-        drag->exec(supportedActions);
+    QPixmap pix(20, 20);
+    pix.fill(color);
+    drag->setPixmap(pix);
+    drag->setMimeData(mimeData);
+    drag->exec(supportedActions);
 
 //        if(drag->exec() == Qt::IgnoreAction){
 //            qDebug() << "Drag ignored";
 //        }
-    }
-
 }
