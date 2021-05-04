@@ -42,17 +42,11 @@ void MainWindow::setUpPalettes()
 {
     qDebug() << "MainWindow::setUpPalettes()";
     //create QListWidgets for all DMC Colors and user's chosen colors
+
     colorPaletteList = new ColorPaletteList(this);
+    ui->userColorPaletteLayout->addWidget(colorPaletteList);
     dmcColorPaletteList = new DMCColorPalette(this);
-
-    //adding the add and remove button for user's QListWidger
-    addToPaletteButton = new QPushButton(this);
-    addToPaletteButton->setText(QString("+"));
-    addToPaletteButton->setGeometry(900, 295, 100, 30);
-
-    removeFromPaletteButton = new QPushButton(this);
-    removeFromPaletteButton->setText("-");
-    removeFromPaletteButton->setGeometry(1000, 295, 100, 30);
+    ui->dmcPaletteLayout->addWidget(dmcColorPaletteList);
 }
 
 
@@ -184,7 +178,7 @@ void MainWindow::on_actionPen_triggered()
     canvas->setTool(ProjectCanvas::Pen);
     setActiveTool(ProjectCanvas::Pen);
 
-    QColor color = colorDialog.getColor(Qt::red, this);
+    QColor color = colorDialog.getColor(Qt::black, this);
     QColor dmcColor = ColorConverter::findClosestColor(color);
 
     if(dmcColor.isValid()){
@@ -250,4 +244,32 @@ void MainWindow::setActiveTool(ProjectCanvas::ToolType tool)
         ui->actionFill_Color->setIcon(QIcon(":/images/50/fillColor.png"));
         ui->actionPen->setIcon(QIcon(":/images/50/pen-50.png"));
     }
+}
+
+void MainWindow::on_addToPaletteButton_clicked()
+{
+    qDebug() << "Add to palette button clicked";
+    QColor userSelectedColor = colorDialog.getColor(Qt::black, this);
+    //userSelectedColor.toRgb();
+    QColor matchedDMCColor = ColorConverter::findClosestColor(userSelectedColor);
+    QStringList colorStringList= ColorConverter::findDMCbyRBGColor(matchedDMCColor.name());
+    qDebug() << "color added to user palette: ";
+    qDebug() << colorStringList;
+    colorPaletteList->addColorToList(colorStringList);
+
+}
+
+void MainWindow::on_colorPaletteList_itemDoubleClicked(QListWidgetItem *item)
+{
+    qDebug() << "Item in user palette double clicked";
+}
+
+void MainWindow::on_removeFromPaletteButton_clicked()
+{
+    qDebug() << "Remove from palette button clicked";
+}
+
+void MainWindow::on_dmcColorPaletteList_itemDoubleClicked(QListWidgetItem *item)
+{
+    qDebug() << "Item in dmc palette double clicked";
 }

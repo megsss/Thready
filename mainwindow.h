@@ -57,6 +57,14 @@ private slots:
 
     void on_actionAdd_Aida_Template_triggered();
 
+    void on_addToPaletteButton_clicked();
+
+    void on_colorPaletteList_itemDoubleClicked(QListWidgetItem *item);
+
+    void on_removeFromPaletteButton_clicked();
+
+    void on_dmcColorPaletteList_itemDoubleClicked(QListWidgetItem *item);
+
 private:
     void setActiveTool(ProjectCanvas::ToolType tool);
     Ui::MainWindow *ui;
