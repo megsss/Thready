@@ -193,6 +193,19 @@
      </property>
      <layout class="QVBoxLayout" name="userColorPaletteLayout"/>
     </widget>
+    <widget class="QPushButton" name="dmcAddButton">
+     <property name="geometry">
+      <rect>
+       <x>261</x>
+       <y>270</y>
+       <width>211</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Add to My Color Palette</string>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

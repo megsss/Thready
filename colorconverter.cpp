@@ -137,5 +137,13 @@ QList<QStringList> ColorConverter::readDMCColors()
     return DMC;
 }
 
+QColor ColorConverter::getColorByName(QStringList &color)
+{
+    QColor returnColor = QColor(color.value(2).toInt(), color.value(3).toInt(), color.value(4).toInt());
+    qDebug() << "ColorConverter::getColorByName";
+    qDebug() << returnColor.name();
+    return returnColor;
+}
+
 
 
