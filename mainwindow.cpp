@@ -31,6 +31,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::CreateNewProject()
 {
+    qDebug() << "MainWindow::CreateNewProject()";
     canvas = new ProjectCanvas(this);
     View * view = new View(this);
     view->setScene(canvas);
@@ -39,11 +40,19 @@ void MainWindow::CreateNewProject()
 
 void MainWindow::setUpPalettes()
 {
+    qDebug() << "MainWindow::setUpPalettes()";
+    //create QListWidgets for all DMC Colors and user's chosen colors
     colorPaletteList = new ColorPaletteList(this);
     dmcColorPaletteList = new DMCColorPalette(this);
-    paletteButton = new QPushButton(this);
-    paletteButton->setText(QString("Add color to palette"));
-    paletteButton->setGeometry(900, 295, 200, 30);
+
+    //adding the add and remove button for user's QListWidger
+    addToPaletteButton = new QPushButton(this);
+    addToPaletteButton->setText(QString("+"));
+    addToPaletteButton->setGeometry(900, 295, 100, 30);
+
+    removeFromPaletteButton = new QPushButton(this);
+    removeFromPaletteButton->setText("-");
+    removeFromPaletteButton->setGeometry(1000, 295, 100, 30);
 }
 
 
@@ -91,7 +100,7 @@ void MainWindow::on_actionUndo_triggered()
 void MainWindow::on_actionRedo_triggered()
 {
     //TODO
-    qDebug() << "Undo triggered";
+    qDebug() << "Redo triggered";
 }
 
 void MainWindow::on_actionAdd_Image_triggered()
@@ -108,6 +117,7 @@ void MainWindow::on_actionAdd_Image_triggered()
 
 void MainWindow::on_actionEyedropper_triggered()
 {
+    qDebug() << "Eyedropper toolbar button triggered";
     canvas->setTool(ProjectCanvas::Eyedropper);
     setActiveTool(ProjectCanvas::Eyedropper);
     statusBar()->showMessage("Current tool is Eyedropper");
@@ -126,6 +136,7 @@ void MainWindow::on_actionEyedropper_triggered()
 
 void MainWindow::on_actionCursor_triggered()
 {
+    qDebug() << "Cursor button triggered";
     QCursor cursor(Qt::ArrowCursor);
     setCursor(cursor);
     statusBar()->showMessage("Current tool is Cursor");
@@ -135,6 +146,7 @@ void MainWindow::on_actionCursor_triggered()
 
 void MainWindow::on_actionFill_Color_triggered()
 {
+    qDebug() << "Fill color toolbar button triggered";
     QCursor cursor(QPixmap(":/images/32/fill_32.png"),32,32);
     setCursor(cursor);
     statusBar()->showMessage("Current tool is Fill");
@@ -155,6 +167,7 @@ void MainWindow::on_actionFill_Color_triggered()
 
 void MainWindow::on_actionEraser_triggered()
 {
+    qDebug() << "Eraser toolbar button was triggered";
     QCursor cursor(Qt::ArrowCursor);
     setCursor(cursor);
     statusBar()->showMessage("Current tool is Eraser");
@@ -164,6 +177,7 @@ void MainWindow::on_actionEraser_triggered()
 
 void MainWindow::on_actionPen_triggered()
 {
+    qDebug() << "Pen toolbar button was triggered";
     QCursor cursor(QPixmap(":/images/32/pen_32.png"),32,32);
     setCursor(cursor);
     statusBar()->showMessage("Current tool is Pen");
@@ -182,14 +196,16 @@ void MainWindow::on_actionPen_triggered()
 
 void MainWindow::on_actionAdd_Aida_Template_triggered()
 {
-
+    qDebug() << "Aida graph toolbar button was triggered";
     canvas->setTool(ProjectCanvas::AidaGraph);
     statusBar()->showMessage("Current tool is Aida Graph");
     canvas->addAidaGraphItem(16);
 }
 
+//This method changes the icons on the toolbar based on active tool
 void MainWindow::setActiveTool(ProjectCanvas::ToolType tool)
 {
+    qDebug() << "MainWindow::setActiveTool - set toolbar icons";
     if(tool == ProjectCanvas::Cursor)
     {
         ui->actionCursor->setIcon(QIcon(":/images/50/cursor-50.png"));
