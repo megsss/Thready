@@ -6,7 +6,7 @@
 
 DMCColorPalette::DMCColorPalette(QWidget *parent) : QListWidget(parent)
 {
-    setGeometry(1150, 450, 200, 200);
+    setGeometry(1150, 90, 200, 200);
     setMinimumWidth(200);
     setMaximumHeight(300);
     setSelectionMode(QAbstractItemView::SingleSelection);

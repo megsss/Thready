@@ -2,7 +2,6 @@
 #include <QColor>
 #include <QDebug>
 #include <QFile>
-#include "dmcfloss.h"
 #include "mainwindow.h"
 
 //This method finds and returns the QColor of the closest DMC color to the color argument

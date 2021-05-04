@@ -13,15 +13,13 @@
 #include <QColorDialog>
 #include "colorconverter.h"
 
-
-
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
     ui->canvasLayout->setGeometry(QRect(0, 0, 750, 990));
-    colorDialog.open();
+    //colorDialog.open();
     CreateNewProject();
     colorPaletteList = new ColorPaletteList(this);
     dmcColorPaletteList = new DMCColorPalette(this);
