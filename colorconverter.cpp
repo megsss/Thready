@@ -99,19 +99,19 @@ QStringList ColorConverter::findDMCbyName(QString colorName)
     }
 }
 
+//This function reads all lines from dmcColorValues.csv file and returns a list of <QStringList> with all DMC colors
 QList<QStringList> ColorConverter::readDMCColors()
 {
     qDebug() << "ColorConverter::readDMCColors()";
+
     QFile dmcFile(":/dmcColorValues.csv");
+
     if(!dmcFile.open(QIODevice::ReadOnly | QIODevice::Text)){
         qDebug() << "File open failed";
-
     }
 
     QTextStream in(&dmcFile);
     QString stringstream;
-    QString name, dmcNum, rgbString;
-
     QList<QStringList> DMC;
 
     do{
@@ -122,10 +122,15 @@ QList<QStringList> ColorConverter::readDMCColors()
             DMC.append(ssList);
         }
     }while(!stringstream.isNull());
+
+    //close dmcColorValues.csv file
     dmcFile.close();
     qDebug() << "Done reading file";
+
+    //clean up list - first index item is the column headers in csv & last index item is blank
     DMC.removeFirst();
     DMC.removeLast();
+
     return DMC;
 }
 
