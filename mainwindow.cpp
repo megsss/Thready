@@ -245,6 +245,20 @@ void MainWindow::on_colorPaletteList_itemDoubleClicked(QListWidgetItem *item)
         updateButtonColor(ui->fillToolColorButton, colorSelected);
         qDebug() << "fill color updated";
     }
+    if(canvas->getTool() == ProjectCanvas::Cursor)
+    {
+        qDebug() << "adding palette color to canvas";
+        QString colorName = item->text();
+        //paletteLabel.setText(QString(colorName));
+        QStringList s = ColorConverter::findDMCbyName(colorName);
+        QColor color = ColorConverter::getColorByName(s);
+        QPixmap colorIcon = QPixmap(20,20);
+        colorIcon.fill(color);
+        //paletteLabel.setPixmap(colorIcon);
+        //QGraphicsRectItem * rect = new QGraphicsRectItem();
+        canvas->addPixmap(colorIcon)->setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
+        canvas->addSimpleText(colorName)->setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
+    }
 }
 
 void MainWindow::on_dmcColorPaletteList_itemDoubleClicked(QListWidgetItem *item)

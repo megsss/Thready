@@ -10,7 +10,7 @@ public:
     explicit ColorPaletteList(QWidget *parent = nullptr);
     void addColorToList(QStringList &color);
     void removeColorFromList(QListWidgetItem *colorItem);
-    //QRect visualItemRect(const QListWidgetItem *item) const;
+    QRect getvisualItemRect(const QListWidgetItem *item) const;
 
 signals:
 

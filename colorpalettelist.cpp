@@ -39,6 +39,12 @@ void ColorPaletteList::removeColorFromList(QListWidgetItem * colorItem)
     update();
 }
 
+QRect ColorPaletteList::getvisualItemRect(const QListWidgetItem *item) const
+{
+    QRect paletteVisual = visualItemRect(item);
+    return paletteVisual;
+}
+
 void ColorPaletteList::startDrag(Qt::DropActions supportedActions)
 {
     QListWidgetItem * item = takeItem(currentRow());
