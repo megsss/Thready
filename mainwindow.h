@@ -68,6 +68,8 @@ private slots:
 
     void on_fillToolColorButton_clicked();
 
+    void on_dmcColorPaletteList_itemDoubleClicked(QListWidgetItem *item);
+
 private:
     void setActiveTool(ProjectCanvas::ToolType tool);
     Ui::MainWindow *ui;

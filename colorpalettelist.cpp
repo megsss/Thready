@@ -13,7 +13,7 @@ ColorPaletteList::ColorPaletteList(QWidget *parent) : QListWidget(parent)
     setFlow(Flow::TopToBottom);
     setGeometry(900, 90, 200, 200);
     setDragEnabled(true);
-
+    setDragDropMode(DragDropMode::DragDrop);
 }
 
 void ColorPaletteList::addColorToList(QStringList &color)
@@ -37,6 +37,12 @@ void ColorPaletteList::removeColorFromList(QListWidgetItem * colorItem)
 {
     removeItemWidget(colorItem);
     update();
+}
+
+QRect ColorPaletteList::getvisualItemRect(const QListWidgetItem *item) const
+{
+    QRect paletteVisual = visualItemRect(item);
+    return paletteVisual;
 }
 
 void ColorPaletteList::startDrag(Qt::DropActions supportedActions)
