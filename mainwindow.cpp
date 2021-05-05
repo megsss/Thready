@@ -249,14 +249,29 @@ void MainWindow::on_colorPaletteList_itemDoubleClicked(QListWidgetItem *item)
     {
         qDebug() << "adding palette color to canvas";
         QString colorName = item->text();
+
         //paletteLabel.setText(QString(colorName));
         QStringList s = ColorConverter::findDMCbyName(colorName);
-        QString dmcNum = s.value(1);
+        QString dmcNum = s.value(0);
         QColor color = ColorConverter::getColorByName(s);
         QPixmap colorIcon = QPixmap(20,20);
         colorIcon.fill(color);
         //paletteLabel.setPixmap(colorIcon);
-        //QGraphicsRectItem * rect = new QGraphicsRectItem();
+
+        QGraphicsPixmapItem colorPixmapItem(colorIcon);
+        colorPixmapItem.setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
+        QGraphicsSimpleTextItem dmcNumItem(dmcNum);
+        dmcNumItem.setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
+        QGraphicsSimpleTextItem colorNameItem(colorName);
+        colorPixmapItem.setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
+        /*
+        QGraphicsItemGroup * paletteItem = new QGraphicsItemGroup();
+        paletteItem->addToGroup(colorNameItem.toGraphicsObject());
+        paletteItem->addToGroup(colorPixmapItem.toGraphicsObject());
+        paletteItem->addToGroup(dmcNumItem.toGraphicsObject());
+        canvas->addItem(paletteItem);
+        */
+        //canvas->addPixmap(colorIcon)->childItems().;
         canvas->addPixmap(colorIcon)->setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
         canvas->addSimpleText(dmcNum)->setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
         canvas->addSimpleText(colorName)->setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
