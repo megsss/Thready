@@ -251,12 +251,14 @@ void MainWindow::on_colorPaletteList_itemDoubleClicked(QListWidgetItem *item)
         QString colorName = item->text();
         //paletteLabel.setText(QString(colorName));
         QStringList s = ColorConverter::findDMCbyName(colorName);
+        QString dmcNum = s.value(1);
         QColor color = ColorConverter::getColorByName(s);
         QPixmap colorIcon = QPixmap(20,20);
         colorIcon.fill(color);
         //paletteLabel.setPixmap(colorIcon);
         //QGraphicsRectItem * rect = new QGraphicsRectItem();
         canvas->addPixmap(colorIcon)->setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
+        canvas->addSimpleText(dmcNum)->setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
         canvas->addSimpleText(colorName)->setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
     }
 }
